@@ -1,0 +1,967 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Helvetica:300,300italic,400,400italic,700,700italic|Bold:300,300italic,400,400italic,700,700italic|Condiment:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="linux," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="http://oacbieak2.bkt.clouddn.com/dongtai.png?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="这一部分主要介绍Linux常用命令工具，比如文件管理、文本处理等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux基础">
+<meta property="og:url" content="http://czlitony.github.io/2016/08/02/2016-08-02-linux-abc/index.html">
+<meta property="og:site_name" content="Simmon's Blog">
+<meta property="og:description" content="这一部分主要介绍Linux常用命令工具，比如文件管理、文本处理等。">
+<meta property="og:updated_time" content="2016-09-25T04:14:22.099Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux基础">
+<meta name="twitter:description" content="这一部分主要介绍Linux常用命令工具，比如文件管理、文本处理等。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://czlitony.github.io/2016/08/02/2016-08-02-linux-abc/"/>
+
+  <title> linux基础 | Simmon's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Simmon's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Nothing is impossible.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                linux基础
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-02T09:38:30+08:00" content="2016-08-02">
+              2016-08-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/02/2016-08-02-linux-abc/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/02/2016-08-02-linux-abc/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+            <span>&nbsp; | &nbsp;
+            <span id="busuanzi_value_page_pv" ></span>次阅读
+            </span>    
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这一部分主要介绍Linux常用命令工具，比如文件管理、文本处理等。</p>
+<a id="more"></a>
+<h2 id="帮助命令"><a href="#帮助命令" class="headerlink" title="帮助命令"></a>帮助命令</h2><h3 id="查看命令的简要说明"><a href="#查看命令的简要说明" class="headerlink" title="查看命令的简要说明"></a>查看命令的简要说明</h3><ul>
+<li>简要说明命令的作用（显示命令所处的man分类页面: <code>whatis command</code></li>
+<li>正则匹配: <code>whatis -w &quot;loca*&quot;</code></li>
+<li>更加详细的说明文档: <code>info command</code></li>
+</ul>
+<h3 id="使用man"><a href="#使用man" class="headerlink" title="使用man"></a>使用man</h3><h4 id="查询命令command的说明文档"><a href="#查询命令command的说明文档" class="headerlink" title="查询命令command的说明文档:"></a>查询命令command的说明文档:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">man command</div></pre></td></tr></table></figure>
+<h4 id="man页面所属的分类标识-常用的是分类1和分类3"><a href="#man页面所属的分类标识-常用的是分类1和分类3" class="headerlink" title="man页面所属的分类标识(常用的是分类1和分类3)"></a>man页面所属的分类标识(常用的是分类1和分类3)</h4><ol>
+<li>用户可以操作的命令或者是可执行文件</li>
+<li>系统核心可调用的函数与工具等</li>
+<li>一些常用的函数与数据库</li>
+<li>设备文件的说明</li>
+<li>设置文件或者某些文件的格式</li>
+<li>游戏</li>
+<li>惯例与协议等。例如Linux标准文件系统、网络协议、ASCⅡ，码等说明内容</li>
+<li>系统管理员可用的管理条令</li>
+<li>与内核有关的文件</li>
+</ol>
+<p>前面说到使用whatis会显示命令所在的具体的文档类别，我们学习如何使用它<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$whatis printf</div><div class="line">printf (1)           - format and print data</div><div class="line">printf (3)           - formatted output conversion</div></pre></td></tr></table></figure></p>
+<p>我们看到printf在分类1和分类3中都有,分类1中的页面是命令操作及可执行文件的帮助,而3是常用函数库说明,如果我们想看的是C语言中printf的用法，可以指定查看分类3的帮助：<code>man 3 printf</code></p>
+<h4 id="查询关键字"><a href="#查询关键字" class="headerlink" title="查询关键字"></a>查询关键字</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">man -k keyword</div></pre></td></tr></table></figure>
+<p>eg：查找GNOME的config配置工具命令: <code>man -k GNOME config| grep 1</code></p>
+<h3 id="查看路径"><a href="#查看路径" class="headerlink" title="查看路径"></a>查看路径</h3><h4 id="查看程序的binary文件所在路径"><a href="#查看程序的binary文件所在路径" class="headerlink" title="查看程序的binary文件所在路径:"></a>查看程序的binary文件所在路径:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">which command</div></pre></td></tr></table></figure>
+<p>eg:查找make程序安装路径: <code>which make</code></p>
+<h4 id="查看程序的搜索路径"><a href="#查看程序的搜索路径" class="headerlink" title="查看程序的搜索路径:"></a>查看程序的搜索路径:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">whereis command</div></pre></td></tr></table></figure>
+<p>当系统中安装了同一软件的多个版本时，不确定使用的是哪个版本时，这个命令就能派上用场。</p>
+<h3 id="快速查看命令用法"><a href="#快速查看命令用法" class="headerlink" title="快速查看命令用法"></a>快速查看命令用法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">command --help</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="文件及目录管理"><a href="#文件及目录管理" class="headerlink" title="文件及目录管理"></a>文件及目录管理</h2><h3 id="创建和删除"><a href="#创建和删除" class="headerlink" title="创建和删除"></a>创建和删除</h3><ul>
+<li>创建： <code>mkdir</code></li>
+<li>删除： <code>rm</code></li>
+<li>删除非空目录： <code>rm -rf file目录</code></li>
+<li>删除日志: <code>rm *log</code> (等价: $find ./ -name “*log” -exec rm {} ;)</li>
+<li>移动： <code>mv</code></li>
+<li>复制： <code>cp</code> (复制目录：cp -r )</li>
+<li>查看当前目录下文件个数: <code>find ./ | wc -l</code></li>
+<li>复制目录: <code>cp -r source_dir  dest_dir</code></li>
+</ul>
+<h3 id="目录切换"><a href="#目录切换" class="headerlink" title="目录切换"></a>目录切换</h3><ul>
+<li>更改当前工作路径为path: <code>cd path</code></li>
+<li>切换到上一个工作目录： <code>cd -</code></li>
+<li>切换到home目录： <code>cd or cd ~</code></li>
+<li>显示当前路径: <code>pwd</code></li>
+</ul>
+<h3 id="列出目录项"><a href="#列出目录项" class="headerlink" title="列出目录项"></a>列出目录项</h3><ul>
+<li>显示当前目录下的文件: <code>ls</code></li>
+<li><p>按时间排序，以列表的方式显示目录项: <code>ls -lrt</code><br>  以上这个命令用到的频率如此之高，以至于我们需要为它建立一个快捷命令方式:<br>  在.bashrc 中设置命令别名:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alias lsl=&apos;ls -lrt&apos;</div><div class="line">alias lm=&apos;ls -al|more&apos;</div></pre></td></tr></table></figure>
+<p>  这样，使用lsl，就可以显示目录中的文件按照修改时间排序；以列表方式显示；</p>
+</li>
+<li><p>给每项文件前面增加一个id编号(看上去更加整洁): <code>ls | cat -n</code><br>注：.bashrc 在/home/你的用户名/ 文件夹下，以隐藏文件的方式存储；可使用 ls -a 查看。</p>
+</li>
+</ul>
+<h3 id="查找目录及文件find-locate"><a href="#查找目录及文件find-locate" class="headerlink" title="查找目录及文件find/locate"></a>查找目录及文件find/locate</h3><ul>
+<li>搜寻文件或目录: <code>find ./ -name &quot;core*&quot; | xargs file</code></li>
+<li>查找目标文件夹中是否有obj文件: <code>find ./ -name &#39;*.o&#39;</code></li>
+<li>递归当前目录及子目录删除所有.o文件:<code>find ./ -name &quot;*.o&quot; -exec rm {} \;</code></li>
+</ul>
+<p>find是实时查找，如果需要更快的查询，可试试locate；locate会为文件系统建立索引数据库，如果有文件更新，需要定期执行更新命令来更新索引库:</p>
+<ul>
+<li>寻找包含有string的路径: <code>locate string</code></li>
+<li>与find不同，locate并不是实时查找。你需要更新数据库，以获得最新的文件索引信息: <code>sudo updatedb</code></li>
+</ul>
+<h3 id="查看文件内容"><a href="#查看文件内容" class="headerlink" title="查看文件内容"></a>查看文件内容</h3><ul>
+<li>查看文件： <code>cat vi head tail more</code></li>
+<li>显示时同时显示行号: <code>cat -n</code></li>
+<li>按页显示列表内容: <code>ls -al | more</code></li>
+<li>只看前10行: <code>head -10 **</code></li>
+<li>显示文件第一行: <code>head -1 filename</code></li>
+<li>显示文件倒数第五行: <code>tail -5 filename</code></li>
+<li>查看两个文件间的差别: <code>diff file1 file2</code></li>
+<li>动态显示文本最新信息: <code>tail -f crawler.log</code></li>
+</ul>
+<h3 id="文件与目录权限修改"><a href="#文件与目录权限修改" class="headerlink" title="文件与目录权限修改"></a>文件与目录权限修改</h3><ul>
+<li>改变文件的拥有者: <code>chown</code></li>
+<li>改变文件读、写、执行等属性: <code>chmod</code></li>
+<li>递归子目录修改： <code>chown -R tuxapp source/</code></li>
+<li>增加脚本可执行权限： <code>chmod a+x myscript</code></li>
+</ul>
+<h3 id="管道和重定向"><a href="#管道和重定向" class="headerlink" title="管道和重定向"></a>管道和重定向</h3><ul>
+<li>批处理命令连接执行，使用： <code>|</code></li>
+<li>串联使用分号： <code>;</code></li>
+<li>前面成功，则执行后面一条，否则，不执行: <code>&amp;&amp;</code></li>
+<li>前面失败，则后一条执行: <code>||</code>, 如 <code>ls /proc &amp;&amp; echo  suss! || echo failed</code></li>
+<li>重定向: <code>ls  proc/*.c &gt; list 2&gt;&amp;l</code> 将标准输出和标准错误重定向到同一文件(&gt;&gt;是追加，&gt;是覆盖)</li>
+<li>等价的是: <code>ls  proc/*.c &amp;&gt; list</code></li>
+<li>清空文件: <code>:&gt; a.txt</code></li>
+<li>重定向: <code>echo aa &gt;&gt; a.txt</code></li>
+</ul>
+<h3 id="Bash快捷输入或删除"><a href="#Bash快捷输入或删除" class="headerlink" title="Bash快捷输入或删除"></a>Bash快捷输入或删除</h3><ul>
+<li>Ctl-U   删除光标到行首的所有字符,在某些设置下,删除全行</li>
+<li>Ctl-W   删除当前光标到前边的最近一个空格之间的字符</li>
+<li>Ctl-H   backspace,删除光标前边的字符</li>
+<li>Ctl-R   匹配最相近的一个文件，然后输出</li>
+</ul>
+<h3 id="综合应用"><a href="#综合应用" class="headerlink" title="综合应用"></a>综合应用</h3><p>查找record.log中包含AAA，但不包含BBB的记录的总数: <code>cat -v record.log | grep AAA | grep -v BBB | wc -l</code><br>统计某个目录下某种文件的总函数： <code>find /home/tony/phonehome/ -name &quot;*.xsl&quot; |xargs cat|wc -l</code></p>
+<hr>
+<h2 id="文本处理"><a href="#文本处理" class="headerlink" title="文本处理"></a>文本处理</h2>
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechatpublic.jpg" alt="Cheng Cui wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/Wechatpay.jpg" alt="Cheng Cui WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/Alipay.jpg" alt="Cheng Cui Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag">#linux</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/26/2016-07-26-java-DOM-create-xml/" rel="next" title="Java DOM生成xml文件">
+                <i class="fa fa-chevron-left"></i> Java DOM生成xml文件
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/02/2016-08-02-vim/" rel="prev" title="vim命令">
+                vim命令 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/08/02/2016-08-02-linux-abc/"
+     data-title="linux基础"
+     data-content=""
+     data-url="http://czlitony.github.io/2016/08/02/2016-08-02-linux-abc/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/02/2016-08-02-linux-abc/"
+           data-title="linux基础" data-url="http://czlitony.github.io/2016/08/02/2016-08-02-linux-abc/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oacbieak2.bkt.clouddn.com/Tony2.jpg"
+               alt="Cheng Cui" />
+          <p class="site-author-name" itemprop="name">Cheng Cui</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/czlitony" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#帮助命令"><span class="nav-number">1.</span> <span class="nav-text">帮助命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看命令的简要说明"><span class="nav-number">1.1.</span> <span class="nav-text">查看命令的简要说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用man"><span class="nav-number">1.2.</span> <span class="nav-text">使用man</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查询命令command的说明文档"><span class="nav-number">1.2.1.</span> <span class="nav-text">查询命令command的说明文档:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#man页面所属的分类标识-常用的是分类1和分类3"><span class="nav-number">1.2.2.</span> <span class="nav-text">man页面所属的分类标识(常用的是分类1和分类3)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询关键字"><span class="nav-number">1.2.3.</span> <span class="nav-text">查询关键字</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看路径"><span class="nav-number">1.3.</span> <span class="nav-text">查看路径</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查看程序的binary文件所在路径"><span class="nav-number">1.3.1.</span> <span class="nav-text">查看程序的binary文件所在路径:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看程序的搜索路径"><span class="nav-number">1.3.2.</span> <span class="nav-text">查看程序的搜索路径:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速查看命令用法"><span class="nav-number">1.4.</span> <span class="nav-text">快速查看命令用法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件及目录管理"><span class="nav-number">2.</span> <span class="nav-text">文件及目录管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建和删除"><span class="nav-number">2.1.</span> <span class="nav-text">创建和删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目录切换"><span class="nav-number">2.2.</span> <span class="nav-text">目录切换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列出目录项"><span class="nav-number">2.3.</span> <span class="nav-text">列出目录项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找目录及文件find-locate"><span class="nav-number">2.4.</span> <span class="nav-text">查找目录及文件find/locate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看文件内容"><span class="nav-number">2.5.</span> <span class="nav-text">查看文件内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件与目录权限修改"><span class="nav-number">2.6.</span> <span class="nav-text">文件与目录权限修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#管道和重定向"><span class="nav-number">2.7.</span> <span class="nav-text">管道和重定向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bash快捷输入或删除"><span class="nav-number">2.8.</span> <span class="nav-text">Bash快捷输入或删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#综合应用"><span class="nav-number">2.9.</span> <span class="nav-text">综合应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本处理"><span class="nav-number">3.</span> <span class="nav-text">文本处理</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Cheng Cui</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+&nbsp&nbsp&nbsp本站总访问量 <span id="busuanzi_value_site_pv"></span> &nbsp&nbsp&nbsp
+您是第<span id="busuanzi_value_site_uv"></span>个来到的小伙伴
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"czlitony"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
