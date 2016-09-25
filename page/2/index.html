@@ -104,7 +104,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Simmon's Blog">
-<meta property="og:url" content="http://cuicheng11165.coding.me/cuicheng11165/page/2/index.html">
+<meta property="og:url" content="https://github.com/cuicheng11165/cuicheng11165.github.io/page/2/index.html">
 <meta property="og:site_name" content="Simmon's Blog">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Simmon's Blog">
@@ -128,7 +128,7 @@
 
 
 
-  <link rel="canonical" href="http://cuicheng11165.coding.me/cuicheng11165/page/2/"/>
+  <link rel="canonical" href="https://github.com/cuicheng11165/cuicheng11165.github.io/page/2/"/>
 
   <title> Simmon's Blog </title>
 </head>
@@ -286,8 +286,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/07/12/2016-07-12-git-p4merge/" itemprop="url">
-                  用p4merge解决git冲突问题
+                <a class="post-title-link" href="/2016/02/17/2016-02-17-Algorithms-fundamentals-divideandconquer/" itemprop="url">
+                  算法导论学习笔记 一 分治算法
                 </a>
               
             
@@ -300,8 +300,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-12T09:38:30+08:00" content="2016-07-12">
-              2016-07-12
+            <time itemprop="dateCreated" datetime="2016-02-17T00:00:00+08:00" content="2016-02-17">
+              2016-02-17
             </time>
           </span>
 
@@ -314,8 +314,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/git/" itemprop="url" rel="index">
-                    <span itemprop="name">git</span>
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
                   </a>
                 </span>
 
@@ -330,8 +330,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/12/2016-07-12-git-p4merge/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/12/2016-07-12-git-p4merge/" itemprop="commentsCount"></span>
+                <a href="/2016/02/17/2016-02-17-Algorithms-fundamentals-divideandconquer/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/17/2016-02-17-Algorithms-fundamentals-divideandconquer/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -357,12 +357,40 @@
 
       
         
-          <p>git在遇到冲突的时候除了可以直接编辑文件来解决冲突，也可以借助一些第三方的图形化工具来解决。p4merge是p4v上采用的一种比对工具，本文采用p4merge来解决git冲突，平台是Linux Mint17。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/12/2016-07-12-git-p4merge/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <p>分治策略是一种常见的算法。在分治策略中，我们递归的求解一个问题，在每层地柜中应用如下三个步骤：</p>
+<ol>
+<li>分解，将问题分解成规模更小但解决方案相同的子问题</li>
+<li>解决，递归的求解子问题，如果子问题足够小则停止递归，直接求解</li>
+<li>合并，将子问题的解组合成原问题的解</li>
+</ol>
+<h2 id="最大字数组问题"><a href="#最大字数组问题" class="headerlink" title="最大字数组问题"></a>最大字数组问题</h2><p>给你一段股市的波动图，找到在什么时候买入，什么时候卖出能获得最大的收益。</p>
+<p><img src="http://i.imgur.com/K4HuEf4.jpg" alt=""></p>
+<h3 id="暴力破解法"><a href="#暴力破解法" class="headerlink" title="暴力破解法"></a>暴力破解法</h3><p>我们很容易的想到一个包里破解法，就是把所有买入，卖出的组合列举出来进行对比，n天中取任意两天作为买入日和卖出日，共有n*(n-1)/2种解法，因此这种解法的时间复杂度是O(n^2）。</p>
+<h3 id="问题变换"><a href="#问题变换" class="headerlink" title="问题变换"></a>问题变换</h3><p>为了方便我们处理，我们把每个数组的值变为股票的净增量。这个时候，最佳解法就变成了求一个数组的最大字数组：</p>
+<p><img src="http://i.imgur.com/nT8zclC.jpg" alt=""></p>
+<h3 id="使用分治策略的求解法"><a href="#使用分治策略的求解法" class="headerlink" title="使用分治策略的求解法"></a>使用分治策略的求解法</h3><p>我们可以认为，我们要寻找子数组array[start,end]的最大字数组分三种情况：</p>
+<ul>
+<li>最大字数组在左半部分</li>
+<li>最大字数组在右半部分</li>
+<li>最大字数组起点在左半部分，终点在右半部分</li>
+</ul>
+<p>对于前两种情况，我们的求解方式和分解前是相同的，我们需要单独处理第三种情况。</p>
+<p>如图：</p>
+<p><img src="http://i.imgur.com/mAJQJHb.jpg" alt=""></p>
+<p>那么我们给出解这个问题的思路：</p>
+<pre><code>FindMaxCrossingSubArray(array,start,end)
+    mid=(start+end)/2
+    从mid开始向左找，找到以mid为终点的最大字数组为array[max-left,min]
+    从mid开始向右找，找到以mid为起点的最大字数组array[min,max-right]
+    跨越mid的最大字数组为array[max-left,max-right]
+    max-leftchild =FindMaxCrossingSubArray(array,start,mid)
+    max-rightchild =FindMaxCrossingSubArray(array,min,end)
+    return max-leftchild,max-rightchild,array[max-left,max-right] 3个中的最大字数组
+</code></pre><h3 id="分治算法分析"><a href="#分治算法分析" class="headerlink" title="分治算法分析"></a>分治算法分析</h3><p>这种方法我们需要遍历的次数会比n^2少一些，时间复杂度为O(nlgn)</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>自己尝试用C#实现了下，托管在了<a href="https://github.com/cuicheng11165/Algorithms">github</a>上</p>
+
+          
         
       
     </div>
@@ -410,8 +438,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/07/06/2016-07-06-ssl-vpn-detailed-explanation/" itemprop="url">
-                  技术点详解---SSL VPN
+                <a class="post-title-link" href="/2016/02/05/2016-02-05-Python-HttpRequest/" itemprop="url">
+                  Python模拟HttpRequest的方法总结
                 </a>
               
             
@@ -424,8 +452,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-06T09:38:30+08:00" content="2016-07-06">
-              2016-07-06
+            <time itemprop="dateCreated" datetime="2016-02-05T00:00:00+08:00" content="2016-02-05">
+              2016-02-05
             </time>
           </span>
 
@@ -438,8 +466,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/network/" itemprop="url" rel="index">
-                    <span itemprop="name">network</span>
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
                   </a>
                 </span>
 
@@ -454,8 +482,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/06/2016-07-06-ssl-vpn-detailed-explanation/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/06/2016-07-06-ssl-vpn-detailed-explanation/" itemprop="commentsCount"></span>
+                <a href="/2016/02/05/2016-02-05-Python-HttpRequest/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/05/2016-02-05-Python-HttpRequest/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -481,12 +509,63 @@
 
       
         
-          <p>SSL VPN是专栏VPN系列技术原理的最后一篇，SSL VPN作为远程接入型的VPN，已经具备非常广阔的前景，它的主要适应场景是取代L2TP Over IPSec，但功能要比L2TP Over IPSec更丰富，方案也更加灵活。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/06/2016-07-06-ssl-vpn-detailed-explanation/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <p>Python可以说是爬网的利器，本文主要介绍了一些python来模拟http请求的一些方法和技巧。</p>
+<p>Python处理请求的类库有两个,urllib,urllib2。 这两个类库并不是一个类库的两个不同版本，urllib主要用来处理一些url相关的内容，发送请求的时候，请求对象只能是一个url。urllib2可以用request对象来实现请求，这样就可以实现如伪造头部，设置代理，http get，http post等方法。</p>
+<p>阅读本文需要了解http请求的一些基本知识，如：</p>
+<ul>
+<li>什么是httpwebrequest，httpwebresponse</li>
+<li>什么是get，post</li>
+<li>什么是cookie</li>
+</ul>
+<p>本文主要介绍模拟请求用到的这些方式：</p>
+<ul>
+<li>设置代理</li>
+<li>伪造头部或者Header信息</li>
+<li>启用cookie</li>
+<li>url参数的处理</li>
+</ul>
+<h3 id="使用urllib2-urlopen直接发送"><a href="#使用urllib2-urlopen直接发送" class="headerlink" title="使用urllib2.urlopen直接发送"></a>使用urllib2.urlopen直接发送</h3><pre><code>import urllib2
+
+url = &apos;http://www.baidu.com/&apos;
+response = urllib2.urlopen(url) ##urlopen接受传入参数是string或者是request
+response_text = response.read()
+</code></pre><h3 id="使用urllib-build-opener"><a href="#使用urllib-build-opener" class="headerlink" title="使用urllib.build_opener"></a>使用urllib.build_opener</h3><h4 id="直接发送请求"><a href="#直接发送请求" class="headerlink" title="直接发送请求"></a>直接发送请求</h4><pre><code>import urllib2
+
+url = &apos;http://www.baidu.com/&apos;
+
+opener = urllib2.build_opener()
+response = opener.open(url)
+response_text = response.read()
+</code></pre><h4 id="通过代理访问站点"><a href="#通过代理访问站点" class="headerlink" title="通过代理访问站点"></a>通过代理访问站点</h4><pre><code>proxy_handler = urllib2.ProxyHandler({&quot;http&quot; : &apos;http://localhost:8888&apos;})
+opener = urllib2.build_opener(proxy_handler)
+response = opener.open(url)
+response_text = response.read()
+</code></pre><h4 id="请求中附带request-body-http-post"><a href="#请求中附带request-body-http-post" class="headerlink" title="请求中附带request body(http post)"></a>请求中附带request body(http post)</h4><pre><code>opener = urllib2.build_opener()
+response = opener.open(url,&apos;request body&apos;)
+response_text = response.read()
+</code></pre><p>body中如果是key-value形式的，可以参照下面的url处理部分来处理</p>
+<h4 id="启用Cookie"><a href="#启用Cookie" class="headerlink" title="启用Cookie"></a>启用Cookie</h4><pre><code>cookie = cookielib.CookieJar()
+opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookie))
+response = opener.open(url)
+response_text = response.read()
+</code></pre><h3 id="使用urllib2-Request"><a href="#使用urllib2-Request" class="headerlink" title="使用urllib2.Request"></a>使用urllib2.Request</h3><h4 id="请求中添加自定义的Header信息"><a href="#请求中添加自定义的Header信息" class="headerlink" title="请求中添加自定义的Header信息"></a>请求中添加自定义的Header信息</h4><pre><code>request = urllib2.Request(url)
+request.add_data(&apos;1234567&apos;)
+request.add_header(&apos;User-Agent&apos;, &apos;fake-client&apos;)
+response = urllib2.urlopen(request)
+</code></pre><h3 id="处理url中的参数信息"><a href="#处理url中的参数信息" class="headerlink" title="处理url中的参数信息"></a>处理url中的参数信息</h3><p>无论是使用get方式还是post方式，经常会遇到需要使用参数的形式，处理参数可以使用下面的类库</p>
+<h4 id="参数集合转string"><a href="#参数集合转string" class="headerlink" title="参数集合转string"></a>参数集合转string</h4><pre><code>para = {&apos;111&apos;:&apos;222&apos;,&apos;aaa&apos;:&apos;bbb&apos;}
+encodeurl = urllib.urlencode(para)
+输出aaa=bbb&amp;111=222
+</code></pre><h4 id="url参数转dictionary"><a href="#url参数转dictionary" class="headerlink" title="url参数转dictionary"></a>url参数转dictionary</h4><pre><code>url = &apos;https://www.baidu.com/s?wd=python%20url%20querystring&amp;pn=10&amp;oq=python%20url%20querystring&amp;tn=baiduhome_pg&amp;ie=utf-8&amp;usm=1&amp;rsv_idx=2&amp;rsv_pq=d09af93600035cb8&amp;rsv_t=d151qRmNNdybGINHcKbyO360E2%2Fg%2FUs2t0MiKqRQXwhHZuNF3IlKyyStzYuofVZczQA3&apos;
+
+splitresult_instance = urlparse.urlsplit(url)
+</code></pre><p>输出对象：<br>SplitResult(scheme=’https’, netloc=’www.baidu.com’, path=’/s’, query=’wd=python%20url%20querystring&amp;pn=10&amp;oq=python%20url%20querystring&amp;tn=baiduhome_pg&amp;ie=utf-8&amp;usm=1&amp;rsv_idx=2&amp;rsv_pq=d09af93600035cb8&amp;rsv_t=d151qRmNNdybGINHcKbyO360E2%2Fg%2FUs2t0MiKqRQXwhHZuNF3IlKyyStzYuofVZczQA3’, fragment=’’)</p>
+<p>想转成集合只要</p>
+<pre><code>result_dic=urlparse.parse_qs(splitresult.query)
+</code></pre><p>通过这种处理方式，把data信息放在url上来实现http get，放在body中实现http post。</p>
+
+          
         
       
     </div>
@@ -534,8 +613,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/07/04/2016-07-04-digital-signature-and-digital certificate/" itemprop="url">
-                  数字签名是什么？
+                <a class="post-title-link" href="/2016/02/04/2016-02-04-getstarted-threadpool/" itemprop="url">
+                  .NET线程池的介绍
                 </a>
               
             
@@ -548,8 +627,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-04T09:38:30+08:00" content="2016-07-04">
-              2016-07-04
+            <time itemprop="dateCreated" datetime="2016-02-04T00:00:00+08:00" content="2016-02-04">
+              2016-02-04
             </time>
           </span>
 
@@ -562,8 +641,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/network/" itemprop="url" rel="index">
-                    <span itemprop="name">network</span>
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
                   </a>
                 </span>
 
@@ -578,8 +657,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/04/2016-07-04-digital-signature-and-digital certificate/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/04/2016-07-04-digital-signature-and-digital certificate/" itemprop="commentsCount"></span>
+                <a href="/2016/02/04/2016-02-04-getstarted-threadpool/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/04/2016-02-04-getstarted-threadpool/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -605,12 +684,90 @@
 
       
         
-          <p>今天，我读到一篇好文章。<br>它用图片通俗易懂地解释了，”数字签名”（digital signature）和”数字证书”（digital certificate）到底是什么。我对这些问题的理解，一直是模模糊糊的，很多细节搞不清楚。读完这篇文章后，发现思路一下子就理清了。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/04/2016-07-04-digital-signature-and-digital certificate/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><p>当你创建一个新的线程的时候，大概需要几百微秒的时间来构建一个新的私有变量堆栈，1M的用户模式堆栈，加载一些必要的DLL。无论如何创建一个线程都是一个浪费资源的行为，线程池就是为了通过线程的重用来避免线程重建的开销。</p>
+<p>当CLR初始化的时候，线程池里没有线程。线程池内部会维护一个请求队列，当你的程序想执行异步操作的时候，你调用的方法会请求线程池的资源进入请求队列。如果线程池没有线程，线程池会创建新的线程，当任务结束的时候，线程不会马上被销毁，而是变为闲置状态，一段时间后，会自动结束。这样避免了频繁创建销毁线程带来的开销。</p>
+<p>有以下几种方式来进行线程池的操作:</p>
+<ul>
+<li>通过Task Parallel Library（TPL），在Framework 4.0开始支持</li>
+<li>通过调用ThreadPool.QueueUserWorkItem</li>
+<li>通过异步委托</li>
+<li>通过 BackgroundWorker</li>
+</ul>
+<h3 id="通过TPL来使用线程池"><a href="#通过TPL来使用线程池" class="headerlink" title="通过TPL来使用线程池"></a>通过TPL来使用线程池</h3><p>.NET Frameworkd 4.0 中引入了<strong>Task</strong>来访问线程池，可以说是ThreadPool.QueueUserWorkItem的升级版，泛型的Task&lt;TResult&gt;是匿名委托方式的升级版。新的Task可以更方便灵活的使用线程池。<br>你可以使用如下方式来使用Task： </p>
+<pre><code>static void Main()// The Task class is in System.Threading.Tasks
+{
+  Task.Factory.StartNew (Go);
+}
+
+static void Go()
+{
+  Console.WriteLine (&quot;Hello from the thread pool!&quot;);
+}
+</code></pre><p>Task&lt;TResult&gt; 是一个泛型版的Task： </p>
+<pre><code>static void Main()
+{
+  // Start the task executing:
+  Task&lt;string&gt; task = Task.Factory.StartNew&lt;string&gt;
+( () =&gt; DownloadString (&quot;http://www.linqpad.net&quot;) );
+
+  // We can do other work here and it will execute in parallel:
+  RunSomeOtherMethod();
+
+  // When we need the task&apos;s return value, we query its Result property:
+  // If it&apos;s still executing, the current thread will now block (wait)
+  // until the task finishes:
+  string result = task.Result;
+}
+
+static string DownloadString (string uri)
+{
+  using (var wc = new System.Net.WebClient())
+return wc.DownloadString (uri);
+}
+</code></pre><h3 id="使用ThreadPool来访问线程池"><a href="#使用ThreadPool来访问线程池" class="headerlink" title="使用ThreadPool来访问线程池"></a>使用ThreadPool来访问线程池</h3><p>使用QueueUserWorkItem可以简单的通过线程池来执行一个委托：<br>    static void Main()<br>    {<br>      ThreadPool.QueueUserWorkItem (Go);<br>      ThreadPool.QueueUserWorkItem (Go, 123);<br>      Console.ReadLine();<br>    }</p>
+<pre><code>static void Go (object data)   // data will be null with the first call.
+{
+  Console.WriteLine (&quot;Hello from the thread pool! &quot; + data);
+}
+</code></pre><h3 id="异步委托来访问线程池"><a href="#异步委托来访问线程池" class="headerlink" title="异步委托来访问线程池"></a>异步委托来访问线程池</h3><p>通过异步委托来执行线程需要以下几步：</p>
+<ol>
+<li>初始化一个委托</li>
+<li>调用BeginInvoke，获得一个IAsyncResult返回值</li>
+<li>当你需要异步委托的返回值时，调用EndInvoke，传入上一步返回的IAsyncResult</li>
+</ol>
+<p>示例代码：</p>
+<pre><code>static void Main()
+{
+  Func&lt;string, int&gt; method = Work;
+  IAsyncResult cookie = method.BeginInvoke (&quot;test&quot;, null, null);
+  //
+  // ... here&apos;s where we can do other work in parallel...
+  //
+  int result = method.EndInvoke (cookie);
+  Console.WriteLine (&quot;String length is: &quot; + result);
+}
+
+static int Work (string s) { return s.Length; }
+</code></pre><p>上面的例子，当执行委托结束时，也可以指定一个回调方法来通知调用者：</p>
+<pre><code>static void Main()
+{
+  Func&lt;string, int&gt; method = Work;
+  method.BeginInvoke (&quot;test&quot;, Done, method);
+  // ...
+  //
+}
+
+static int Work (string s) { return s.Length; }
+
+static void Done (IAsyncResult cookie)
+{
+  var target = (Func&lt;string, int&gt;) cookie.AsyncState;
+  int result = target.EndInvoke (cookie);
+  Console.WriteLine (&quot;String length is: &quot; + result);
+}
+</code></pre>
+          
         
       
     </div>
@@ -658,8 +815,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/06/30/2016-06-30-Visual-Stdio-Code/" itemprop="url">
-                  VSC Keyboard Shortcuts
+                <a class="post-title-link" href="/2016/02/03/2016-02-02-git-cmd-instruction/" itemprop="url">
+                  Git Shell 基本命令(官网脱水版)
                 </a>
               
             
@@ -672,8 +829,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-30T10:38:30+08:00" content="2016-06-30">
-              2016-06-30
+            <time itemprop="dateCreated" datetime="2016-02-03T00:00:00+08:00" content="2016-02-03">
+              2016-02-03
             </time>
           </span>
 
@@ -686,8 +843,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/tools/" itemprop="url" rel="index">
-                    <span itemprop="name">tools</span>
+                  <a href="/categories/建站/" itemprop="url" rel="index">
+                    <span itemprop="name">建站</span>
                   </a>
                 </span>
 
@@ -702,8 +859,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/06/30/2016-06-30-Visual-Stdio-Code/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/30/2016-06-30-Visual-Stdio-Code/" itemprop="commentsCount"></span>
+                <a href="/2016/02/03/2016-02-02-git-cmd-instruction/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/03/2016-02-02-git-cmd-instruction/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -729,12 +886,52 @@
 
       
         
-          <p>Some frequently used vsc keyboard shortcuts.</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/30/2016-06-30-Visual-Stdio-Code/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <h2 id="用户信息"><a href="#用户信息" class="headerlink" title="用户信息"></a>用户信息</h2><p>当安装完 Git 应该做的第一件事就是设置你的用户名称与邮件地址。 这样做很重要，因为每一个 Git 的提交都会使用这些信息，并且它会写入到你的每一次提交中，不可更改：  </p>
+<p>$ <strong>git config –global user.name “John Doe”</strong><br>$ <strong>git config –global user.email johndoe@example.com</strong></p>
+<h2 id="获取命令帮助"><a href="#获取命令帮助" class="headerlink" title="获取命令帮助"></a>获取命令帮助</h2><p>$ <strong>git help verb</strong><br>$ <strong>git verb help</strong><br>$ <strong>man git-verb</strong>  </p>
+<h2 id="检查配置信息"><a href="#检查配置信息" class="headerlink" title="检查配置信息"></a>检查配置信息</h2><p>如果想要检查你的配置，可以使用 git config –list 命令来列出所有 Git 当时能找到的配置。</p>
+<h2 id="在现有目录中初始化仓库"><a href="#在现有目录中初始化仓库" class="headerlink" title="在现有目录中初始化仓库"></a>在现有目录中初始化仓库</h2><p>如果你打算使用 Git 来对现有的项目进行管理，你只需要进入该项目目录(本地路径)并输入：<br>$ <strong>git init</strong></p>
+<p>如果你是在一个已经存在文件的文件夹（而不是空文件夹）中初始化 Git 仓库来进行版本控制的话，你应该开始跟踪这些文件并提交。 你可通过 git add 命令来实现对指定文件的跟踪，然后执行 git commit 提交： </p>
+<p>$ <strong>git add *</strong><br>$ <strong>git add LICENSE</strong><br>$ <strong>git commit -m ‘initial project version’</strong></p>
+<h2 id="下载代码"><a href="#下载代码" class="headerlink" title="下载代码"></a>下载代码</h2><p>如果你想下载托管在git上的代码，只需要知道代码托管路径，然后输入：<br>$ <strong>git clone <a href="https://github.com/libgit2/libgit2">https://github.com/libgit2/libgit2</a></strong><br>如果你想重命名下载到本地的目录那么输入：<br>$ <strong>git clone <a href="https://github.com/libgit2/libgit2">https://github.com/libgit2/libgit2</a> foldername</strong><br>这将执行与上一个命令相同的操作，不过在本地创建的仓库名字变为 foldername。</p>
+<h2 id="记录每次更新"><a href="#记录每次更新" class="headerlink" title="记录每次更新"></a>记录每次更新</h2><h3 id="检查当前文件状态"><a href="#检查当前文件状态" class="headerlink" title="检查当前文件状态"></a>检查当前文件状态</h3><p>要查看哪些文件处于什么状态，可以用 git status 命令。 如果在克隆仓库后立即使用此命令，会看到类似这样的输出：  </p>
+<p>$ <strong>git status</strong>    </p>
+<p>现在，让我们在项目下创建一个新的 README 文件。 如果之前并不存在这个文件，使用 git status 命令，你将看到一个新的未跟踪文件：  </p>
+<p>$ <strong>echo ‘Readme文件内容’ &gt; README</strong><br>$ <strong>git status</strong></p>
+<p>使用这个命令你会看到哪些文件没有被版本库记录了。</p>
+<h3 id="跟踪新文件"><a href="#跟踪新文件" class="headerlink" title="跟踪新文件"></a>跟踪新文件</h3><p>把刚刚创建的README放入版本库中跟踪，只需要：<br>$ <strong>git add README</strong><br>$ <strong>git status</strong></p>
+<h3 id="状态简览"><a href="#状态简览" class="headerlink" title="状态简览"></a>状态简览</h3><p>$ <strong>git status -s</strong><br>　M README<br>MM Rakefile<br>A　 lib/git.rb<br>M　 lib/simplegit.rb<br>??　LICENSE.txt<br>新添加的未跟踪文件前面有 ?? 标记，新添加到暂存区中的文件前面有 A 标记，修改过的文件前面有 M 标记。 你可能注意到了 M 有两个可以出现的位置，出现在右边的 M 表示该文件被修改了但是还没放入暂存区，出现在靠左边的 M 表示该文件被修改了并放入了暂存区。 例如，上面的状态报告显示： README 文件在工作区被修改了但是还没有将修改后的文件放入暂存区,lib/simplegit.rb 文件被修改了并将修改后的文件放入了暂存区。 而 Rakefile 在工作区被修改并提交到暂存区后又在工作区中被修改了，所以在暂存区和工作区都有该文件被修改了的记录。</p>
+<h3 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h3><p>一般我们总会有些文件无需纳入 Git 的管理，也不希望它们总出现在未跟踪文件列表。 通常都是些自动生成的文件，比如日志文件，或者编译过程中创建的临时文件等。 在这种情况下，我们可以创建一个名为 .gitignore 的文件，列出要忽略的文件模式。 来看一个实际的例子：</p>
+<p>$ <strong>cat .gitignore</strong><br>这个命令表示读取.gitignore文件下的内容，并输出到控制台上</p>
+<h3 id="查看已暂存和未暂存的修改"><a href="#查看已暂存和未暂存的修改" class="headerlink" title="查看已暂存和未暂存的修改"></a>查看已暂存和未暂存的修改</h3><p>要查看尚未暂存的文件更新了哪些部分，不加参数直接输入 <strong>git diff</strong><br>若要查看已暂存的将要添加到下次提交里的内容，可以用 <strong>git diff –cached</strong> 命令</p>
+<h3 id="提交更新"><a href="#提交更新" class="headerlink" title="提交更新"></a>提交更新</h3><p>提交更新之前，git status看下所有修改是否都被记录了，然后<br>$ <strong>git commit</strong></p>
+<p>可能会进入vim模式，这时候 ctrl+c 输入 :wq  保存文件并退出，也可以</p>
+<p>$ <strong>git commit -m “Story 182: Fix benchmarks for speed”</strong></p>
+<h3 id="跳过使用暂存区域"><a href="#跳过使用暂存区域" class="headerlink" title="跳过使用暂存区域"></a>跳过使用暂存区域</h3><p>正常的提交流程是:  </p>
+<ul>
+<li><strong>git status</strong> 查看状态  </li>
+<li><strong>git add .</strong> 放入暂存区域  </li>
+<li><strong>git commit -m “提交记录”</strong>  </li>
+</ul>
+<p>来提交，如果你觉得这样太麻烦，可以-a来跳过暂存区域：<br>$ <strong>git commit -a -m ‘added new benchmarks’</strong></p>
+<h3 id="移除文件"><a href="#移除文件" class="headerlink" title="移除文件"></a>移除文件</h3><p>移除文件分两种，是否在当前目录保留这个文件，需要保留则：<br>$ <strong>git rm –cached filename</strong><br>不需要保留则：<br>$ <strong>git rm filename</strong></p>
+<h2 id="查看提交历史"><a href="#查看提交历史" class="headerlink" title="查看提交历史"></a>查看提交历史</h2><p>$ <strong>git log</strong><br>即可。至于更高端的用法，查看<a href="https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2" target="_blank" rel="external">文档</a></p>
+<h2 id="撤销操作"><a href="#撤销操作" class="headerlink" title="撤销操作"></a>撤销操作</h2><p>类似于svn的revert操作：<br>$ <strong>git checkout – filename.md</strong><br>$ <strong>git status</strong></p>
+<h2 id="远程仓库的使用"><a href="#远程仓库的使用" class="headerlink" title="远程仓库的使用"></a>远程仓库的使用</h2><ul>
+<li><p>新代码publish到新的仓库<br>如果你想把你的没有被git托管的代码发布到github上，那么按照下面的操作：<br><strong>echo “readme文件内容” &gt;&gt; README.md</strong><br><strong>git init</strong><br><strong>git add README.md</strong><br><strong>git commit -m “first commit”</strong><br><strong>git remote add origin <a href="https://github.com/cuicheng11165/1758.git">https://github.com/cuicheng11165/1758.git</a></strong><br><strong>git push -u origin master</strong>  </p>
+</li>
+<li><p>现有仓库发布到远程仓库<br>如果git已经在本地托管了，那么只需要：<br><strong>git remote add origin <a href="https://github.com/cuicheng11165/1758.git">https://github.com/cuicheng11165/1758.git</a></strong><br><strong>git push -u origin master</strong>  </p>
+</li>
+</ul>
+<p>拉取远程的改动分为pull 和fetch，pull相当于fetch+merge  </p>
+<ul>
+<li>fetch的使用：<br><strong>git fetch origin master</strong><br><strong>git merge</strong>  </li>
+<li>pull的使用:<br><strong>git pull origin master</strong>  </li>
+</ul>
+<p><a href="https://git-scm.com/book/zh/v2" target="_blank" rel="external">官方文档</a></p>
+
+          
         
       
     </div>
@@ -782,8 +979,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/06/30/2016-06-30-cmd-markdown/" itemprop="url">
-                  Cmd Markdown
+                <a class="post-title-link" href="/2016/02/02/2016-02-02-publish-blog-to-github/" itemprop="url">
+                  在Github上搭建自己的博客(Windows平台)
                 </a>
               
             
@@ -796,8 +993,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-30T09:38:30+08:00" content="2016-06-30">
-              2016-06-30
+            <time itemprop="dateCreated" datetime="2016-02-02T00:00:00+08:00" content="2016-02-02">
+              2016-02-02
             </time>
           </span>
 
@@ -810,8 +1007,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/markdown/" itemprop="url" rel="index">
-                    <span itemprop="name">markdown</span>
+                  <a href="/categories/建站/" itemprop="url" rel="index">
+                    <span itemprop="name">建站</span>
                   </a>
                 </span>
 
@@ -826,8 +1023,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/06/30/2016-06-30-cmd-markdown/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/30/2016-06-30-cmd-markdown/" itemprop="commentsCount"></span>
+                <a href="/2016/02/02/2016-02-02-publish-blog-to-github/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/02/2016-02-02-publish-blog-to-github/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -853,12 +1050,288 @@
 
       
         
-          <p>Cmd Markdown是一种markdown文本编辑工具，这篇文章对该工具进行了相关的介绍。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/30/2016-06-30-cmd-markdown/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <p>折腾了好久，终于在Github上搭建了自己的博客。这里面总结一下过程希望对大家能有所帮助。</p>
+<h2 id="Github建博优缺点"><a href="#Github建博优缺点" class="headerlink" title="Github建博优缺点"></a>Github建博优缺点</h2><ul>
+<li>和 csdn，博客园，网易相比，在Github上可以自己实现功能，跳过运营商的限制  </li>
+<li>和阿里云，VPS相比，github托管的代码是免费的  </li>
+<li>github上只能托管静态网页，后台有数据库的这种动态网站不能托管  </li>
+</ul>
+<h2 id="你有一个Github的账号"><a href="#你有一个Github的账号" class="headerlink" title="你有一个Github的账号"></a>你有一个Github的账号</h2><ul>
+<li>懂一些基本的Web开发相关的知识  </li>
+<li>Ruby运行时，可以在Windows或者linux环境下进行安装  </li>
+</ul>
+<h2 id="建站的过程"><a href="#建站的过程" class="headerlink" title="建站的过程"></a>建站的过程</h2><ul>
+<li>在github创建网站的代码库，名字必须为username.github.io格式  </li>
+<li>将你的网站的代码上传到代码库中  </li>
+<li>配置域名  </li>
+</ul>
+<p>如果你每一次写博客的同时还要手写html css 等信息，那么工作量会很大，github支持jekyll来自动生成页面。</p>
+<h2 id="Jekyll环境的搭建"><a href="#Jekyll环境的搭建" class="headerlink" title="Jekyll环境的搭建"></a>Jekyll环境的搭建</h2><ul>
+<li>如果你是在Windows环境下配置。首先需要安装Ruby运行时，Jekyll是一个用Ruby写的软件。<br><a href="http://jekyll-windows.juthilo.com/" target="_blank" rel="external">Run Jekyll On Windows</a>  里面展示了Windows下使用Jekyll的方法，大体分以下几步完成：</li>
+</ul>
+<ol>
+<li>安装Ruby运行时，<a href="http://rubyinstaller.org/downloads/" target="_blank" rel="external">下载地址</a> ,windows 平台下的安装过程很简单，安装过程记得勾选Add Ruby excuteables to  your PATH</li>
+<li>安装RubyDevKi，和Ruby的版本相同。下载后解压,执行以下3步：<br>cd c:\RubyDevki<br>ruby dk.rb init<br>ruby dk.rb install  </li>
+<li>安装jekyll，github上给出了配置文档 <a href="https://help.github.com/articles/using-jekyll-with-pages" target="_blank" rel="external">install Jekyll</a> ，Bundler是一个包管理器，让你更方便的使用Ruby里面的软件，如果你想要在本地编译Github页面，那么使用 gem install bundler 来安装bundler</li>
+<li>配置jekyll,在站点的根目录里创建一个文件 Gemfile,文件内容如下：<br>source ‘<a href="https://rubygems.org" target="_blank" rel="external">https://rubygems.org</a>‘<br>gem ‘github-pages’<br>然后运行bundle install即可安装Jekyll。  </li>
+<li>安装成功后，运行 jekyll newe sitename 即可创建一个站点</li>
+<li>命令行 bundle exec jekyll serve即可运行站点，成功后访问 <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> 即可。</li>
+</ol>
+<h2 id="配置域名"><a href="#配置域名" class="headerlink" title="配置域名"></a>配置域名</h2><p>买一个域名，把域名的ip指向github服务器，在网站的目录下建一个文件名为CNAME，文件的内容是你的域名，提交。购买的域名就会指向你的博客。</p>
+<h2 id="Jekyll网站的定制"><a href="#Jekyll网站的定制" class="headerlink" title="Jekyll网站的定制"></a>Jekyll网站的定制</h2><p>网站的语言是基于liquid的，每一次你修改文件后，jekyll会自动重新生成网站。编辑成功后提交到github，访问<a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a> 访问你的博客。这里面有一些别人共享的网站模板可以供大家选择。<a href="http://jekyllthemes.org/" target="_blank" rel="external">网站模板</a>里面有很多别人共享的主题。</p>
+<h2 id="Jekyll网站需要解决的一些问题"><a href="#Jekyll网站需要解决的一些问题" class="headerlink" title="Jekyll网站需要解决的一些问题"></a>Jekyll网站需要解决的一些问题</h2><ol>
+<li>网站是静态的，因此只需要发表博客重新生成即可，发表博客可以使用 <a href="https://en.wikipedia.org/wiki/Markdown" target="_blank" rel="external">markdown</a> 来实现，简化了写博客的过程</li>
+<li>网站的社交功能需要想办法实现，因为没有后台数据库，因此需要一些第三方的帮助来实现留言回复功能。常用的有多说，disqus等</li>
+<li>现有模板有很多的前台是基于<a href="http://baike.baidu.com/link?url=_Ju_TPVJCSducO4xSr6TwL5Bx5ZDRhK9bvpTzC8_wgKVVfNA2VZtpWdMk04nL7cixReciDCO1C0o-w76AD7GqxqVLggXiQTW_46OF7HkNWC" target="_blank" rel="external">bootstrap</a>来实现的，里面一些脚本的信息可能会被墙，需要自己找替代</li>
+</ol>
+<h2 id="编写博客"><a href="#编写博客" class="headerlink" title="编写博客"></a>编写博客</h2><p>博客的编写一般是基于markdown来实现的，markdown本身是为了简化书写的设计的<a href="https://en.wikipedia.org/wiki/Markdown#Example" target="_blank" rel="external">语法</a>，大家不用写博客的时候还考虑html语法，关于markdown的编译，windows平台下推荐使用markdownpad，可以编辑markdown的同时进行preview，非常的方便。</p>
+<p>参考文章：<br><a href="http://jekyll-windows.juthilo.com" target="_blank" rel="external">如何在Windows下使用Jekyll</a><br><a href="http://www.pchou.info/web-build/2013/01/03/build-github-blog-page-01.html" target="_blank" rel="external">一步一步在Github上创建主页</a><br><a href="http://www.williamlong.info/archives/4319.html" target="_blank" rel="external">好用的Markdown编辑器一览</a><br><a href="https://en.wikipedia.org/wiki/Markdown" target="_blank" rel="external">Markdown Wiki</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/02/2015-12-16-inside-dictionary/" itemprop="url">
+                  带你看懂Dictionary内部实现
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-02T00:00:00+08:00" content="2016-02-02">
+              2016-02-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/02/2015-12-16-inside-dictionary/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/02/2015-12-16-inside-dictionary/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&nbsp;</p><br><p>了解Dictionary的开发人员都了解，和List相比，字典添加会慢，但是查找会比较快，那么Dictionary是如何实现的呢？</p><br><h1>Dictionary的构造</h1><br><p>下面的代码我看看Dictionary在构造时都做了什么：</p><br><div class="cnblogs_code"><br><pre>        <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">void</span> Initialize(<span style="color: #0000ff;">int</span><span style="color: #000000;"> capacity)<br>        {<br>            </span><span style="color: #0000ff;">int</span> prime =<span style="color: #000000;"> HashHelpers.GetPrime(capacity);<br>            </span><span style="color: #0000ff;">this</span>.buckets = <span style="color: #0000ff;">new</span> <span style="color: #0000ff;">int</span><span style="color: #000000;">[prime];<br>            </span><span style="color: #0000ff;">for</span> (<span style="color: #0000ff;">int</span> i = <span style="color: #800080;">0</span>; i &lt; <span style="color: #0000ff;">this</span>.buckets.Length; i++<span style="color: #000000;">)<br>            {<br>                </span><span style="color: #0000ff;">this</span>.buckets[i] = -<span style="color: #800080;">1</span><span style="color: #000000;">;<br>            }<br>            </span><span style="color: #0000ff;">this</span>.entries = <span style="color: #0000ff;">new</span> Entry&lt;TKey, TValue&gt;<span style="color: #000000;">[prime];<br>            </span><span style="color: #0000ff;">this</span>.freeList = -<span style="color: #800080;">1</span><span style="color: #000000;">;<br>        } </span></pre><br></div><br><p>&nbsp;</p><br><p>我们看到，Dictionary在构造的时候做了以下几件事：</p><br><ol style="margin-left: 54pt;"><br><li>初始化一个this.buckets = new int[prime]</li><br><li>初始化一个this.entries = new Entry&lt;TKey, TValue&gt;[prime]</li><br><li>Bucket和entries的容量都为大于字典容量的一个最小的质数</li><br></ol><br><p>其中this.buckets主要用来进行Hash碰撞，this.entries用来存储字典的内容，并且标识下一个元素的位置。</p><br><p>我们以Dictionary&lt;int,string&gt; 为例，来展示一下Dictionary如何添加元素：</p><br><p>首先，我们构造一个:</p><br><p>Dictionary&lt;int, string&gt; test = new Dictionary&lt;int, string&gt;(6);</p><br><h1>初始化后<span style="font-size: 11pt;">： </span></h1><br><p><img src="http://images0.cnblogs.com/blog/147759/201507/220046159287455.png" alt=""></p><br><h1>添加元素时，集合内部Bucket和entries的变化</h1><br><h2>Test.Add(4,”4”)后：</h2><br><p>根据Hash算法： 4.GetHashCode()%7= 4,因此碰撞到buckets中下标为4的槽上，此时由于Count为0，因此元素放在Entries中第0个元素上，添加后Count变为1</p><br><p><img src="http://images0.cnblogs.com/blog/147759/201507/220046164126140.png" alt=""></p><br><p>&nbsp;</p><br><p>&nbsp;</p><br><h2>Test.Add(11,”11”)</h2><br><p>根据Hash算法 11.GetHashCode()%7=4,因此再次碰撞到Buckets中下标为4的槽上，由于此槽上的值已经不为-1，此时Count=1，因此把这个新加的元素放到entries中下标为1的数组中，并且让Buckets槽指向下标为1的entries中，下标为1的entry之下下标为0的entries。</p><br><p><img src="http://images0.cnblogs.com/blog/147759/201507/220046169594040.png" alt=""></p><br><h2>Test.Add(18,”18”)</h2><br><p>我们添加18，让HashCode再次碰撞到Buckets中下标为4的槽上，这个时候新元素添加到count+1的位置，并且Bucket槽指向新元素，新元素的Next指向Entries中下标为1的元素。此时你会发现所有hashcode相同的元素都形成了一个链表，如果元素碰撞次数越多，链表越长。所花费的时间也相对较多。</p><br><p>&nbsp;</p><br><p><img src="http://images0.cnblogs.com/blog/147759/201507/220046174907710.png" alt=""></p><br><h2>Test.Add(19,”19”)</h2><br><p>再次添加元素19，此时Hash碰撞到另外一个槽上，但是元素仍然添加到count+1的位置。</p><br><p><img src="http://images0.cnblogs.com/blog/147759/201507/220046181316582.png" alt=""></p><br><p>&nbsp;</p><br><p>&nbsp;</p><br><h2>删除元素时集合内部的变化</h2><br><h2>Test.Remove(4)</h2><br><p>我们删除元素时，通过一次碰撞，并且沿着链表寻找3次，找到key为4的元素所在的位置，删除当前元素。并且把FreeList的位置指向当前删除元素的位置，FreeCount置为1</p><br><p><img src="http://images0.cnblogs.com/blog/147759/201507/220046192098152.png" alt=""></p><br><p>&nbsp;</p><br><h2>Test.Remove(18)</h2><br><p>删除Key为18的元素，仍然通过一次碰撞，并且沿着链表寻找2次，找到当前元素，删除当前元素，并且让FreeList指向当前元素，当前元素的Next指向上一个FreeList元素。</p><br><p>此时你会发现FreeList指向了一个链表，链表里面不包含任何元素，FreeCount表示不包含元素的链表的长度。</p><br><p><img src="http://images0.cnblogs.com/blog/147759/201507/220046201463766.png" alt=""></p><br><h2>Test.Add(20,”20”)</h2><br><p>再添加一个元素，此时由于FreeList链表不为空，因此字典会优先添加到FreeList链表所指向的位置，添加后FreeCount减1，FreeList链表长度变为1</p><br><p><img src="http://images0.cnblogs.com/blog/147759/201507/220046208035866.png" alt=""></p><br><h1>总结：</h1><br><p>通过以上试验，我们可以发现Dictionary在添加，删除元素按照如下方法进行：</p><br><ol><br><li>通过Hash算法来碰撞到指定的Bucket上，碰撞到同一个Bucket槽上所有数据形成一个单链表</li><br><li>默认情况Entries槽中的数据按照添加顺序排列</li><br><li>删除的数据会形成一个FreeList的链表，添加数据的时候，优先向FreeList链表中添加数据，FreeList为空则按照count依次排列</li><br><li>字典查询及其的效率取决于碰撞的次数，这也解释了为什么Dictionary的查找会很快。</li><br></ol><br><p>&nbsp;</p><br><p>好吧，熬了半宿，今天先写到这了，如果看了有所收获就帮忙顶一下，有问题欢迎拍砖。</p><br><p>&nbsp;</p>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/12/15/2015-12-15-fiddler-core-test-webapi/" itemprop="url">
+                  使用Fiddler Core 来测试你的Web API
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-15T00:00:00+08:00" content="2015-12-15">
+              2015-12-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/15/2015-12-15-fiddler-core-test-webapi/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/15/2015-12-15-fiddler-core-test-webapi/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>大家在调试Web相关的API时，经常会用Fiddler来查看相关的请求，以及返回结果。当然你也可以尝试修改或者重复你的请求信息。本文主要介绍如何使用代码来实现fiddler的功能。</p><br><h2>Fiddler Core API</h2><br><p>Fiddler Core几乎实现了你能用fiddler做的所有功能。直接在NuGet上搜索FiddlerCore即可下载FiddlerCore的.Net API。</p><br><p><img src="http://images2015.cnblogs.com/blog/147759/201512/147759-20151213123051262-2134426614.png" alt=""></p><br><h2>开启Fiddler Application</h2><br><p>使用下面的代码来开启FiddlerApplication</p><br><p><span style="color: #2b91af; font-family: Consolas; font-size: 9pt;"><span style="background-color: white;">FiddlerApplication<span style="color: black;">.Startup(9898, <span style="color: #2b91af;">FiddlerCoreStartupFlags<span style="color: black;">.Default);</span></span></span></span> </span></p><br><p>执行后，fiddler会运行一个http代理服务器，你可以使用FiddlerCoreStartupFlags.RegisterAsSystemProxy 来把这个代理服务器指定为系统代理，这样就可以监听到本机所有的http请求。</p><br><p>当程序结束的时候，记得使用下面的语句来关闭代理。</p><br><p><span style="color: #2b91af; font-family: Consolas; font-size: 9pt;"><span style="background-color: white;">FiddlerApplication<span style="color: black;">.Shutdown();</span></span> </span></p><br><h2>捕获HttpRequest/HttpResponse</h2><br><p>开启了Fiddler Application之后，Fiddler在捕获Request/Response的时候会触发下面这两个事件，你只需要定义事件来实现如何处理捕获到的请求即可。</p><br><p><span style="color: black; font-family: Consolas; font-size: 9pt; background-color: white;"> <span style="color: green;">//</span></span></p><br><p><span style="color: black; font-family: Consolas; font-size: 9pt; background-color: white;"> <span style="color: green;">// Summary:</span></span></p><br><p><span style="color: black; font-family: Consolas; font-size: 9pt; background-color: white;"> <span style="color: green;">// This event fires when a client request is received by Fiddler</span></span></p><br><p><span style="color: black; font-family: Consolas; font-size: 9pt; background-color: white;"> <span style="color: blue;">public<span style="color: black;"> <span style="color: blue;">static<span style="color: black;"> <span style="color: blue;">event<span style="color: black;"> <span style="color: #2b91af;">SessionStateHandler<span style="color: black;"> BeforeRequest; </span></span></span></span></span></span></span></span></span></p><br><p><span style="color: black; font-family: Consolas; font-size: 9pt; background-color: white;"> <span style="color: green;">//</span></span></p><br><p><span style="color: black; font-family: Consolas; font-size: 9pt; background-color: white;"> <span style="color: green;">// Summary:</span></span></p><br><p><span style="color: black; font-family: Consolas; font-size: 9pt; background-color: white;"> <span style="color: green;">// This event fires when a server response is received by Fiddler</span></span></p><br><p><span style="color: black; font-family: Consolas; font-size: 9pt;"><span style="background-color: white;"> <span style="color: blue;">public<span style="color: black;"> <span style="color: blue;">static<span style="color: black;"> <span style="color: blue;">event<span style="color: black;"> <span style="color: #2b91af;">SessionStateHandler<span style="color: black;"> BeforeResponse;</span></span></span></span></span></span></span></span></span> </span></p><br><h2>安装证书</h2><br><p>那么如何捕获https协议的页面呢？众所周知，https通过通信证书来实现了服务器端和客户端的加密，避免通信过程被监听。Fiddler通过中间人的方式来实现https协议的捕获，所谓中间人就是Fiddler注入到应用程序和服务器的中间，fiddler相对于服务器扮演客户端的角色，相对于客户端扮演服务器的角色，既然fiddler需要扮演服务器的角色，就需要一个证书，并且你的客户端需要信任Fiddler的证书。我们以中国银行的网站为例：</p><br><p>不开启Fiddler登陆网银时，证书信息为：</p><br><p><img src="http://images2015.cnblogs.com/blog/147759/201512/147759-20151213123051919-1844797516.png" alt=""></p><br><p>&nbsp;</p><br><p>开启Fiddler登陆网银后证书信息为：</p><br><p><img src="http://images2015.cnblogs.com/blog/147759/201512/147759-20151213123052637-506067430.png" alt=""></p><br><p>由于我的机器已经信任过Fiddler的证书，我们可以发现，在开启了Fiddler后，和中行网银的通信证书变为了：DO_NOT_TRUST_FiddlerRoot。如果使用FiddlerCore，我们同样需要信任这个证书，相关的代码如下：</p><br><div class="cnblogs_Highlighter"><br><pre class="brush:csharp;gutter:true;">public static bool InstallCertificate()<br>{<br>    if (!CertMaker.rootCertExists())<br>    {<br>        if (!CertMaker.createRootCert())<br>            return false;<br><br>        if (!CertMaker.trustRootCert())<br>            return false;<br>    }<br><br>    return true;<br>}</pre><br></div><br><h2>开始捕获</h2><br><p>使用这种方式，可以在不改变你现有代码的情况下，测试你的API返回结果是否正确。下面的例子是一个用FiddlerCoreAPI来测试SharePointOnline认证是否通过的例子。</p><br><div class="cnblogs_Highlighter"><br><pre class="brush:csharp;gutter:true;">using Fiddler;<br>using Microsoft.SharePoint.Client;<br>using System;<br>using System.Collections.Generic;<br>using System.IO;<br>using System.Linq;<br>using System.Net;<br>using System.Security;<br>using System.Text;<br>using System.Threading.Tasks;<br><br>namespace FiddlerCoreTest<br>{<br>    class Program<br>    {<br>        static void Main(string[] args)<br>        {<br>            ServicePointManager.ServerCertificateValidationCallback = (a, b, c, d) =&gt; true;<br><br>            FiddlerApplication.BeforeRequest += FiddlerApplication_BeforeRequest;<br>            FiddlerApplication.BeforeResponse += FiddlerApplication_BeforeResponse;<br>            FiddlerApplication.Startup(9898, FiddlerCoreStartupFlags.Default | FiddlerCoreStartupFlags.RegisterAsSystemProxy);<br>            try<br>            {<br>                ClientContext context = new ClientContext(“<a href="https://domain.sharepoint.com" target="_blank" rel="external">https://domain.sharepoint.com</a>“);<br><br>                SecureString se = new SecureString();<br>                foreach (var cc in “password”)<br>                {<br>                    se.AppendChar(cc);<br>                }<br><br>                var cre = new SharePointOnlineCredentials(“user@domain.onmicrosoft.com”, se);<br>                var cookie = cre.GetAuthenticationCookie(new Uri(“<a href="https://domain.sharepoint.com" target="_blank" rel="external">https://domain.sharepoint.com</a>“));<br>            }<br>            catch (Exception e)<br>            {<br><br>            }<br><br>            FiddlerApplication.Shutdown();<br>            Console.ReadLine();<br>        }<br><br>        static void FiddlerApplication_BeforeResponse(Session oSession)<br>        {<br>            //想如何改写Response信息在这里随意发挥了<br>            Console.WriteLine(“BeforeResponse: {0}”, oSession.responseCode);<br>        }<br><br>        static void FiddlerApplication_BeforeRequest(Session oSession)<br>        {<br>            //想如何改写Request信息在这里随意发挥了<br>            Console.WriteLine(“BeforeRequest: {0}, {1}”, oSession.fullUrl, oSession.responseCode);<br>        }<br>    }<br>}<br></pre><br></div><br><p>　　</p>
+
+          
         
       
     </div>
@@ -930,7 +1403,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -938,7 +1411,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -947,7 +1420,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -961,7 +1434,7 @@
           
             
               <span class="links-of-author-item">
-                <a href="https://github.com/czlitony" target="_blank" title="GitHub">
+                <a href="https://github.com/cuicheng11165" target="_blank" title="GitHub">
                   
                     <i class="fa fa-fw fa-github"></i>
                   
@@ -1103,7 +1576,7 @@
   
 
   <script type="text/javascript">
-    var duoshuoQuery = {short_name:"czlitony"};
+    var duoshuoQuery = {short_name:"simmon"};
     (function() {
       var ds = document.createElement('script');
       ds.type = 'text/javascript';ds.async = true;

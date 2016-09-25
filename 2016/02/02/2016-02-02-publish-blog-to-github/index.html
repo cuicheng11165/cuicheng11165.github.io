@@ -1,0 +1,921 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Helvetica:300,300italic,400,400italic,700,700italic|Bold:300,300italic,400,400italic,700,700italic|Condiment:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="github," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="http://oacbieak2.bkt.clouddn.com/dongtai.png?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="折腾了好久，终于在Github上搭建了自己的博客。这里面总结一下过程希望对大家能有所帮助。
+Github建博优缺点
+和 csdn，博客园，网易相比，在Github上可以自己实现功能，跳过运营商的限制  
+和阿里云，VPS相比，github托管的代码是免费的  
+github上只能托管静态网页，后台有数据库的这种动态网站不能托管  
+
+你有一个Github的账号
+懂一些基本的Web开发相关的知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Github上搭建自己的博客(Windows平台)">
+<meta property="og:url" content="https://github.com/cuicheng11165/cuicheng11165.github.io/2016/02/02/2016-02-02-publish-blog-to-github/index.html">
+<meta property="og:site_name" content="Simmon's Blog">
+<meta property="og:description" content="折腾了好久，终于在Github上搭建了自己的博客。这里面总结一下过程希望对大家能有所帮助。
+Github建博优缺点
+和 csdn，博客园，网易相比，在Github上可以自己实现功能，跳过运营商的限制  
+和阿里云，VPS相比，github托管的代码是免费的  
+github上只能托管静态网页，后台有数据库的这种动态网站不能托管  
+
+你有一个Github的账号
+懂一些基本的Web开发相关的知识">
+<meta property="og:updated_time" content="2016-02-03T07:54:00.097Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在Github上搭建自己的博客(Windows平台)">
+<meta name="twitter:description" content="折腾了好久，终于在Github上搭建了自己的博客。这里面总结一下过程希望对大家能有所帮助。
+Github建博优缺点
+和 csdn，博客园，网易相比，在Github上可以自己实现功能，跳过运营商的限制  
+和阿里云，VPS相比，github托管的代码是免费的  
+github上只能托管静态网页，后台有数据库的这种动态网站不能托管  
+
+你有一个Github的账号
+懂一些基本的Web开发相关的知识">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://github.com/cuicheng11165/cuicheng11165.github.io/2016/02/02/2016-02-02-publish-blog-to-github/"/>
+
+  <title> 在Github上搭建自己的博客(Windows平台) | Simmon's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Simmon's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Nothing is impossible.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                在Github上搭建自己的博客(Windows平台)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-02T00:00:00+08:00" content="2016-02-02">
+              2016-02-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/建站/" itemprop="url" rel="index">
+                    <span itemprop="name">建站</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/02/2016-02-02-publish-blog-to-github/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/02/2016-02-02-publish-blog-to-github/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+            <span>&nbsp; | &nbsp;
+            <span id="busuanzi_value_page_pv" ></span>次阅读
+            </span>    
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>折腾了好久，终于在Github上搭建了自己的博客。这里面总结一下过程希望对大家能有所帮助。</p>
+<h2 id="Github建博优缺点"><a href="#Github建博优缺点" class="headerlink" title="Github建博优缺点"></a>Github建博优缺点</h2><ul>
+<li>和 csdn，博客园，网易相比，在Github上可以自己实现功能，跳过运营商的限制  </li>
+<li>和阿里云，VPS相比，github托管的代码是免费的  </li>
+<li>github上只能托管静态网页，后台有数据库的这种动态网站不能托管  </li>
+</ul>
+<h2 id="你有一个Github的账号"><a href="#你有一个Github的账号" class="headerlink" title="你有一个Github的账号"></a>你有一个Github的账号</h2><ul>
+<li>懂一些基本的Web开发相关的知识  </li>
+<li>Ruby运行时，可以在Windows或者linux环境下进行安装  </li>
+</ul>
+<h2 id="建站的过程"><a href="#建站的过程" class="headerlink" title="建站的过程"></a>建站的过程</h2><ul>
+<li>在github创建网站的代码库，名字必须为username.github.io格式  </li>
+<li>将你的网站的代码上传到代码库中  </li>
+<li>配置域名  </li>
+</ul>
+<p>如果你每一次写博客的同时还要手写html css 等信息，那么工作量会很大，github支持jekyll来自动生成页面。</p>
+<h2 id="Jekyll环境的搭建"><a href="#Jekyll环境的搭建" class="headerlink" title="Jekyll环境的搭建"></a>Jekyll环境的搭建</h2><ul>
+<li>如果你是在Windows环境下配置。首先需要安装Ruby运行时，Jekyll是一个用Ruby写的软件。<br><a href="http://jekyll-windows.juthilo.com/" target="_blank" rel="external">Run Jekyll On Windows</a>  里面展示了Windows下使用Jekyll的方法，大体分以下几步完成：</li>
+</ul>
+<ol>
+<li>安装Ruby运行时，<a href="http://rubyinstaller.org/downloads/" target="_blank" rel="external">下载地址</a> ,windows 平台下的安装过程很简单，安装过程记得勾选Add Ruby excuteables to  your PATH</li>
+<li>安装RubyDevKi，和Ruby的版本相同。下载后解压,执行以下3步：<br>cd c:\RubyDevki<br>ruby dk.rb init<br>ruby dk.rb install  </li>
+<li>安装jekyll，github上给出了配置文档 <a href="https://help.github.com/articles/using-jekyll-with-pages" target="_blank" rel="external">install Jekyll</a> ，Bundler是一个包管理器，让你更方便的使用Ruby里面的软件，如果你想要在本地编译Github页面，那么使用 gem install bundler 来安装bundler</li>
+<li>配置jekyll,在站点的根目录里创建一个文件 Gemfile,文件内容如下：<br>source ‘<a href="https://rubygems.org" target="_blank" rel="external">https://rubygems.org</a>‘<br>gem ‘github-pages’<br>然后运行bundle install即可安装Jekyll。  </li>
+<li>安装成功后，运行 jekyll newe sitename 即可创建一个站点</li>
+<li>命令行 bundle exec jekyll serve即可运行站点，成功后访问 <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> 即可。</li>
+</ol>
+<h2 id="配置域名"><a href="#配置域名" class="headerlink" title="配置域名"></a>配置域名</h2><p>买一个域名，把域名的ip指向github服务器，在网站的目录下建一个文件名为CNAME，文件的内容是你的域名，提交。购买的域名就会指向你的博客。</p>
+<h2 id="Jekyll网站的定制"><a href="#Jekyll网站的定制" class="headerlink" title="Jekyll网站的定制"></a>Jekyll网站的定制</h2><p>网站的语言是基于liquid的，每一次你修改文件后，jekyll会自动重新生成网站。编辑成功后提交到github，访问<a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a> 访问你的博客。这里面有一些别人共享的网站模板可以供大家选择。<a href="http://jekyllthemes.org/" target="_blank" rel="external">网站模板</a>里面有很多别人共享的主题。</p>
+<h2 id="Jekyll网站需要解决的一些问题"><a href="#Jekyll网站需要解决的一些问题" class="headerlink" title="Jekyll网站需要解决的一些问题"></a>Jekyll网站需要解决的一些问题</h2><ol>
+<li>网站是静态的，因此只需要发表博客重新生成即可，发表博客可以使用 <a href="https://en.wikipedia.org/wiki/Markdown" target="_blank" rel="external">markdown</a> 来实现，简化了写博客的过程</li>
+<li>网站的社交功能需要想办法实现，因为没有后台数据库，因此需要一些第三方的帮助来实现留言回复功能。常用的有多说，disqus等</li>
+<li>现有模板有很多的前台是基于<a href="http://baike.baidu.com/link?url=_Ju_TPVJCSducO4xSr6TwL5Bx5ZDRhK9bvpTzC8_wgKVVfNA2VZtpWdMk04nL7cixReciDCO1C0o-w76AD7GqxqVLggXiQTW_46OF7HkNWC" target="_blank" rel="external">bootstrap</a>来实现的，里面一些脚本的信息可能会被墙，需要自己找替代</li>
+</ol>
+<h2 id="编写博客"><a href="#编写博客" class="headerlink" title="编写博客"></a>编写博客</h2><p>博客的编写一般是基于markdown来实现的，markdown本身是为了简化书写的设计的<a href="https://en.wikipedia.org/wiki/Markdown#Example" target="_blank" rel="external">语法</a>，大家不用写博客的时候还考虑html语法，关于markdown的编译，windows平台下推荐使用markdownpad，可以编辑markdown的同时进行preview，非常的方便。</p>
+<p>参考文章：<br><a href="http://jekyll-windows.juthilo.com" target="_blank" rel="external">如何在Windows下使用Jekyll</a><br><a href="http://www.pchou.info/web-build/2013/01/03/build-github-blog-page-01.html" target="_blank" rel="external">一步一步在Github上创建主页</a><br><a href="http://www.williamlong.info/archives/4319.html" target="_blank" rel="external">好用的Markdown编辑器一览</a><br><a href="https://en.wikipedia.org/wiki/Markdown" target="_blank" rel="external">Markdown Wiki</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/Wechatpay.jpg" alt="Cheng Cui WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/Alipay.jpg" alt="Cheng Cui Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/github/" rel="tag">#github</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/02/2015-12-16-inside-dictionary/" rel="next" title="带你看懂Dictionary内部实现">
+                <i class="fa fa-chevron-left"></i> 带你看懂Dictionary内部实现
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/03/2016-02-02-git-cmd-instruction/" rel="prev" title="Git Shell 基本命令(官网脱水版)">
+                Git Shell 基本命令(官网脱水版) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/02/02/2016-02-02-publish-blog-to-github/"
+     data-title="在Github上搭建自己的博客(Windows平台)"
+     data-content=""
+     data-url="https://github.com/cuicheng11165/cuicheng11165.github.io/2016/02/02/2016-02-02-publish-blog-to-github/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/02/02/2016-02-02-publish-blog-to-github/"
+           data-title="在Github上搭建自己的博客(Windows平台)" data-url="https://github.com/cuicheng11165/cuicheng11165.github.io/2016/02/02/2016-02-02-publish-blog-to-github/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oacbieak2.bkt.clouddn.com/Tony2.jpg"
+               alt="Cheng Cui" />
+          <p class="site-author-name" itemprop="name">Cheng Cui</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/cuicheng11165" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Github建博优缺点"><span class="nav-number">1.</span> <span class="nav-text">Github建博优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#你有一个Github的账号"><span class="nav-number">2.</span> <span class="nav-text">你有一个Github的账号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建站的过程"><span class="nav-number">3.</span> <span class="nav-text">建站的过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jekyll环境的搭建"><span class="nav-number">4.</span> <span class="nav-text">Jekyll环境的搭建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置域名"><span class="nav-number">5.</span> <span class="nav-text">配置域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jekyll网站的定制"><span class="nav-number">6.</span> <span class="nav-text">Jekyll网站的定制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jekyll网站需要解决的一些问题"><span class="nav-number">7.</span> <span class="nav-text">Jekyll网站需要解决的一些问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写博客"><span class="nav-number">8.</span> <span class="nav-text">编写博客</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Cheng Cui</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+&nbsp&nbsp&nbsp本站总访问量 <span id="busuanzi_value_site_pv"></span> &nbsp&nbsp&nbsp
+您是第<span id="busuanzi_value_site_uv"></span>个来到的小伙伴
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"simmon"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
