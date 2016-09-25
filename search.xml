@@ -5,7 +5,7 @@
     
     <entry>
       <title><![CDATA[Hello World]]></title>
-      <url>http://czlitony.github.io/2016/09/25/hello-world/</url>
+      <url>http://cuicheng11165.coding.me/cuicheng11165/2016/09/25/hello-world/</url>
       <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <a id="more"></a>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
@@ -21,7 +21,7 @@
     
     <entry>
       <title><![CDATA[Notes]]></title>
-      <url>http://czlitony.github.io/2016/09/25/2016-07-16-Notes/</url>
+      <url>http://cuicheng11165.coding.me/cuicheng11165/2016/09/25/2016-07-16-Notes/</url>
       <content type="html"><![CDATA[<p>本文主要记录平时遇到的一些杂碎的东西。</p>
 <a id="more"></a>
 <h2 id="Python实现xslt"><a href="#Python实现xslt" class="headerlink" title="Python实现xslt"></a>Python实现xslt</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python3</div><div class="line"># coding=utf-8</div><div class="line"># Created Time: 2016-06-20</div><div class="line"></div><div class="line">__author__ = &apos;Matthew Gao&apos;</div><div class="line"></div><div class="line">import lxml.etree as ET</div><div class="line">import pprint</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">def parse():</div><div class="line">    pp = pprint.PrettyPrinter(indent=4)</div><div class="line">    xml_filename = &apos;amc_one_of_everything.xml&apos;</div><div class="line">    xsl_filename = &apos;phonehometranslator.xsl&apos;</div><div class="line"></div><div class="line">    dom = ET.parse(xml_filename)</div><div class="line">    xslt = ET.parse(xsl_filename)</div><div class="line">    transform = ET.XSLT(xslt)</div><div class="line">    newdom = transform(dom)</div><div class="line">    # print(ET.tostring(newdom, pretty_print=True))</div><div class="line">    pp.pprint(ET.tostring(newdom, pretty_print=True).decode())</div><div class="line"></div><div class="line">    print(transform.error_log)</div><div class="line"></div><div class="line">    for entry in transform.error_log:</div><div class="line">        print(&apos;message from line %s, col %s: %s&apos; % (entry.line, entry.column, entry.message))</div><div class="line">        print(&apos;domain: %s (%d)&apos; % (entry.domain_name, entry.domain))</div><div class="line">        print(&apos;type: %s (%d)&apos; % (entry.type_name, entry.type))</div><div class="line">        print(&apos;level: %s (%d)&apos; % (entry.level_name, entry.level))</div><div class="line">        print(&apos;filename: %s&apos; % entry.filename)</div><div class="line"></div><div class="line">if __name__ == &quot;__main__&quot;:</div><div class="line">    parse()</div></pre></td></tr></table></figure>
@@ -78,7 +78,7 @@
     
     <entry>
       <title><![CDATA[vim命令]]></title>
-      <url>http://czlitony.github.io/2016/08/02/2016-08-02-vim/</url>
+      <url>http://cuicheng11165.coding.me/cuicheng11165/2016/08/02/2016-08-02-vim/</url>
       <content type="html"><![CDATA[<p>这一部分主要介绍vim常用用法。</p>
 <a id="more"></a>
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Vim（Vi[Improved]）编辑器是功能强大的跨平台文本文件编辑工具，继承自Unix系统的Vi编辑器，支持Linux/Mac OS X/Windows系统，利用它可以建立、修改文本文件。进入Vim编辑程序，可以在终端输入下面的命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim [filename]</div></pre></td></tr></table></figure></p>
@@ -101,7 +101,7 @@
     
     <entry>
       <title><![CDATA[linux基础]]></title>
-      <url>http://czlitony.github.io/2016/08/02/2016-08-02-linux-abc/</url>
+      <url>http://cuicheng11165.coding.me/cuicheng11165/2016/08/02/2016-08-02-linux-abc/</url>
       <content type="html"><![CDATA[<p>这一部分主要介绍Linux常用命令工具，比如文件管理、文本处理等。</p>
 <a id="more"></a>
 <h2 id="帮助命令"><a href="#帮助命令" class="headerlink" title="帮助命令"></a>帮助命令</h2><h3 id="查看命令的简要说明"><a href="#查看命令的简要说明" class="headerlink" title="查看命令的简要说明"></a>查看命令的简要说明</h3><ul>
@@ -205,7 +205,7 @@
     
     <entry>
       <title><![CDATA[Java DOM生成xml文件]]></title>
-      <url>http://czlitony.github.io/2016/07/26/2016-07-26-java-DOM-create-xml/</url>
+      <url>http://cuicheng11165.coding.me/cuicheng11165/2016/07/26/2016-07-26-java-DOM-create-xml/</url>
       <content type="html"><![CDATA[<p>我们不仅可以使用DOM的方式解析XML文件，同时也可以使用DOM的方式生成XML文件。本文主要内容是使用DOM的方式生成XML文件。</p>
 <a id="more"></a>
 <p>首先是创建DOM之中的各个节点，然后按照各自的层次添加这些节点。<br>DomCreateDoucment.java文件内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">package com.app.dom;</div><div class="line"></div><div class="line">import java.io.File;</div><div class="line">import java.io.FileOutputStream;</div><div class="line"></div><div class="line">import javax.xml.parsers.DocumentBuilder;</div><div class="line">import javax.xml.parsers.DocumentBuilderFactory;</div><div class="line">import javax.xml.transform.OutputKeys;</div><div class="line">import javax.xml.transform.Transformer;</div><div class="line">import javax.xml.transform.TransformerFactory;</div><div class="line">import javax.xml.transform.dom.DOMSource;</div><div class="line">import javax.xml.transform.stream.StreamResult;</div><div class="line"></div><div class="line">import org.w3c.dom.Document;</div><div class="line">import org.w3c.dom.Element;</div><div class="line">import org.w3c.dom.Text;</div><div class="line"></div><div class="line">public class DomCreateDoucment &#123;</div><div class="line"></div><div class="line">	public static void main(String[] args) throws Exception &#123;</div><div class="line"></div><div class="line">		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();</div><div class="line">		DocumentBuilder builder = factory.newDocumentBuilder();</div><div class="line">		Document doc = builder.newDocument();</div><div class="line">		//构建XML中的节点</div><div class="line">		Element root = doc.createElement(&quot;font&quot;);</div><div class="line">		Element nameElement = doc.createElement(&quot;name&quot;);</div><div class="line">		Text nameValue = doc.createTextNode(&quot;san&quot;);</div><div class="line">		Element sizeElement = doc.createElement(&quot;size&quot;);</div><div class="line">		sizeElement.setAttribute(&quot;unit&quot;, &quot;px&quot;);</div><div class="line">		Text sizeValue = doc.createTextNode(&quot;14&quot;);</div><div class="line">       //按顺序添加各个节点</div><div class="line">		doc.appendChild(root);</div><div class="line">		root.appendChild(nameElement);</div><div class="line">		nameElement.appendChild(nameValue);</div><div class="line">		root.appendChild(sizeElement);</div><div class="line">		sizeElement.appendChild(sizeValue);</div><div class="line">		</div><div class="line">		Transformer t=TransformerFactory.newInstance().newTransformer();</div><div class="line">		//设置换行和缩进</div><div class="line">		t.setOutputProperty(OutputKeys.INDENT,&quot;yes&quot;);</div><div class="line">		t.setOutputProperty(OutputKeys.METHOD, &quot;xml&quot;);</div><div class="line">		t.transform(new DOMSource(doc), new StreamResult(new FileOutputStream(new File(&quot;text.xml&quot;))));</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -218,7 +218,7 @@
     
     <entry>
       <title><![CDATA[JDBC远程连接MySql]]></title>
-      <url>http://czlitony.github.io/2016/07/22/2016-07-22-jdbc-remote-connect-mysql/</url>
+      <url>http://cuicheng11165.coding.me/cuicheng11165/2016/07/22/2016-07-22-jdbc-remote-connect-mysql/</url>
       <content type="html"><![CDATA[<p>本文主要内容是开启MySql数据库的远程连接功能，然后远程通过JDBC来连接上数据库，进行简单的查询操作。</p>
 <a id="more"></a>
 <h2 id="开启mysql远程连接功能"><a href="#开启mysql远程连接功能" class="headerlink" title="开启mysql远程连接功能"></a>开启mysql远程连接功能</h2><p>mysql默认的远程连接功能貌似是关闭的，如果需要远程连接的话需要开通。开通的过程分为以下几步：</p>
@@ -240,7 +240,7 @@
     
     <entry>
       <title><![CDATA[xslt调用java类方法]]></title>
-      <url>http://czlitony.github.io/2016/07/21/2016-07-21-xslt-java-function/</url>
+      <url>http://cuicheng11165.coding.me/cuicheng11165/2016/07/21/2016-07-21-xslt-java-function/</url>
       <content type="html"><![CDATA[<p>xslt中可以调用java的类方法，对这种引用了java方法的xslt的解析可以采用java JDK自带的 javax.xml.transform.本文对这种方法进行介绍。</p>
 <a id="more"></a>
 <p>主要的步骤为：</p>
@@ -278,7 +278,7 @@
     
     <entry>
       <title><![CDATA[用xalan解析xml文件]]></title>
-      <url>http://czlitony.github.io/2016/07/20/2016-07-20-ASF-xalan/</url>
+      <url>http://cuicheng11165.coding.me/cuicheng11165/2016/07/20/2016-07-20-ASF-xalan/</url>
       <content type="html"><![CDATA[<p>XSLT 是一种基于规则的格式转换语言。在许多人眼里,它的功能就是将一种格式的 xml 文件转换成另外一种格式的 xml 或 html 文件，仅此而已。不过，事实真是这样吗？</p>
 <a id="more"></a>
 <p>其实 XSLT 能够做的事情很多，绝对超乎你的想象。除了格式转换，XSLT 还能完成一些看起来和格式转换完全无关的工作。比如说文件访问或者是数据库查询等等。而这一切都要归功于 XSLT 扩展（XSLT Extension）。<br>根据 XSLT 1.0 的规范，符合标准的 XSLT 引擎应该支持 XSLT 扩展。也就是允许用户自定义 XSLT 的扩展元素（extension elements）和函数(extension functions)。今天我们所看到的主流 XSLT 引擎都按照国际标准，提供了自己的扩展方式。而开源软件中的 saxaon 和 xalan，在这方面走得更远。<br>Saxon 和 xalan 都是基于 java 开发的 XSLT 引擎，为它们编写扩展自然也基于 java。一般只要以下 3 步就可以完成一个扩展了。</p>
@@ -308,7 +308,7 @@
     
     <entry>
       <title><![CDATA[Vmware vSphere虚拟机与主机共享剪贴板]]></title>
-      <url>http://czlitony.github.io/2016/07/12/2016-07-12-vmvare-vsphere-share-plate/</url>
+      <url>http://cuicheng11165.coding.me/cuicheng11165/2016/07/12/2016-07-12-vmvare-vsphere-share-plate/</url>
       <content type="html"><![CDATA[<p>默认情况下，Vmware vSphere已禁用针对ESXESXi的复制和粘贴操作，以防止公开已复制到剪贴板中的敏感数据。其实可以通过设置启用它，具体操作如下：</p>
 <a id="more"></a>
 <ol>
@@ -332,7 +332,7 @@ isolation.tools.paste.disable    false
     
     <entry>
       <title><![CDATA[Samba配置方案]]></title>
-      <url>http://czlitony.github.io/2016/07/12/2016-07-12-samba/</url>
+      <url>http://cuicheng11165.coding.me/cuicheng11165/2016/07/12/2016-07-12-samba/</url>
       <content type="html"><![CDATA[<p>对于samba的配置有多种方案，本方案使所有的guest用户都可以不用输入用户名密码都能访问共享的文件夹。基于Linux Mint17来进行配置。</p>
 <a id="more"></a>
 <h2 id="安装samba"><a href="#安装samba" class="headerlink" title="安装samba"></a>安装samba</h2><p>安装samba比较简单，在控制台输入:</p>
@@ -360,7 +360,7 @@ isolation.tools.paste.disable    false
     
     <entry>
       <title><![CDATA[用p4merge解决git冲突问题]]></title>
-      <url>http://czlitony.github.io/2016/07/12/2016-07-12-git-p4merge/</url>
+      <url>http://cuicheng11165.coding.me/cuicheng11165/2016/07/12/2016-07-12-git-p4merge/</url>
       <content type="html"><![CDATA[<p>git在遇到冲突的时候除了可以直接编辑文件来解决冲突，也可以借助一些第三方的图形化工具来解决。p4merge是p4v上采用的一种比对工具，本文采用p4merge来解决git冲突，平台是Linux Mint17。</p>
 <a id="more"></a>
 <h2 id="p4merge安装"><a href="#p4merge安装" class="headerlink" title="p4merge安装"></a>p4merge安装</h2><p><strong>如果linux系统上面已经安装过p4v客户端，p4merge应该已经装好了，就可以跳过p4merge安装这个步骤了。</strong></p>
@@ -398,7 +398,7 @@ sudo cp -rf lib/* /usr/local/lib/
     
     <entry>
       <title><![CDATA[技术点详解---SSL VPN]]></title>
-      <url>http://czlitony.github.io/2016/07/06/2016-07-06-ssl-vpn-detailed-explanation/</url>
+      <url>http://cuicheng11165.coding.me/cuicheng11165/2016/07/06/2016-07-06-ssl-vpn-detailed-explanation/</url>
       <content type="html"><![CDATA[<p>SSL VPN是专栏VPN系列技术原理的最后一篇，SSL VPN作为远程接入型的VPN，已经具备非常广阔的前景，它的主要适应场景是取代L2TP Over IPSec，但功能要比L2TP Over IPSec更丰富，方案也更加灵活。</p>
 <a id="more"></a>
 <h2 id="一、SSL-VPN简介"><a href="#一、SSL-VPN简介" class="headerlink" title="一、SSL VPN简介"></a>一、SSL VPN简介</h2><p>何谓SSL VPN，首先要从SSL谈起，使用网络不能不提的是各个网站，浏览网站使用浏览器，网络上传送网页的协议叫HTTP，它是明文传播的，传播内容可以被黑客读取。而SSL全名叫Secure Session Layer（安全会话层），其最初目的是给HTTP加密使用的安全套件，使用SSL的HTTP，也就摇身一变成了HTTPS，端口也从HTTP的80变成了443。由于HTTPS具备安全性，也具备传输数据的能力，也就被研究VPN技术的专家盯上了，觉得HTTPS可以用于组建VPN方案，于是乎SSL VPN技术就呼之欲出了。经过多年的发展，SSL版本发展到了3.0，也被标准组织采纳为TLS（Transport Layer Security传输层安全） 1.0之中，所以SSL VPN也叫TLS VPN。下面是SSL 与SSL VPN、TLS的区别：</p>
@@ -529,7 +529,7 @@ sudo cp -rf lib/* /usr/local/lib/
     
     <entry>
       <title><![CDATA[数字签名是什么？]]></title>
-      <url>http://czlitony.github.io/2016/07/04/2016-07-04-digital-signature-and-digital%20certificate/</url>
+      <url>http://cuicheng11165.coding.me/cuicheng11165/2016/07/04/2016-07-04-digital-signature-and-digital%20certificate/</url>
       <content type="html"><![CDATA[<p>今天，我读到一篇好文章。<br>它用图片通俗易懂地解释了，”数字签名”（digital signature）和”数字证书”（digital certificate）到底是什么。我对这些问题的理解，一直是模模糊糊的，很多细节搞不清楚。读完这篇文章后，发现思路一下子就理清了。</p>
 <a id="more"></a>
 <hr>
@@ -580,7 +580,7 @@ sudo cp -rf lib/* /usr/local/lib/
     
     <entry>
       <title><![CDATA[VSC Keyboard Shortcuts]]></title>
-      <url>http://czlitony.github.io/2016/06/30/2016-06-30-Visual-Stdio-Code/</url>
+      <url>http://cuicheng11165.coding.me/cuicheng11165/2016/06/30/2016-06-30-Visual-Stdio-Code/</url>
       <content type="html"><![CDATA[<p>Some frequently used vsc keyboard shortcuts.</p>
 <a id="more"></a>
 <ul>
@@ -643,7 +643,7 @@ sudo cp -rf lib/* /usr/local/lib/
     
     <entry>
       <title><![CDATA[Cmd Markdown]]></title>
-      <url>http://czlitony.github.io/2016/06/30/2016-06-30-cmd-markdown/</url>
+      <url>http://cuicheng11165.coding.me/cuicheng11165/2016/06/30/2016-06-30-cmd-markdown/</url>
       <content type="html"><![CDATA[<p>Cmd Markdown是一种markdown文本编辑工具，这篇文章对该工具进行了相关的介绍。</p>
 <a id="more"></a>
 <h1 id="欢迎使用-Cmd-Markdown-编辑阅读器"><a href="#欢迎使用-Cmd-Markdown-编辑阅读器" class="headerlink" title="欢迎使用 Cmd Markdown 编辑阅读器"></a>欢迎使用 Cmd Markdown 编辑阅读器</h1><hr>
