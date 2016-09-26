@@ -148,6 +148,15 @@ $ git config –global user.name “John Doe”$ git config –global user.email
   
 
 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-73276874-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
 
 
 
@@ -372,7 +381,7 @@ $ git config –global user.name “John Doe”$ git config –global user.email
 <h2 id="在现有目录中初始化仓库"><a href="#在现有目录中初始化仓库" class="headerlink" title="在现有目录中初始化仓库"></a>在现有目录中初始化仓库</h2><p>如果你打算使用 Git 来对现有的项目进行管理，你只需要进入该项目目录(本地路径)并输入：<br>$ <strong>git init</strong></p>
 <p>如果你是在一个已经存在文件的文件夹（而不是空文件夹）中初始化 Git 仓库来进行版本控制的话，你应该开始跟踪这些文件并提交。 你可通过 git add 命令来实现对指定文件的跟踪，然后执行 git commit 提交： </p>
 <p>$ <strong>git add *</strong><br>$ <strong>git add LICENSE</strong><br>$ <strong>git commit -m ‘initial project version’</strong></p>
-<h2 id="下载代码"><a href="#下载代码" class="headerlink" title="下载代码"></a>下载代码</h2><p>如果你想下载托管在git上的代码，只需要知道代码托管路径，然后输入：<br>$ <strong>git clone <a href="https://github.com/libgit2/libgit2">https://github.com/libgit2/libgit2</a></strong><br>如果你想重命名下载到本地的目录那么输入：<br>$ <strong>git clone <a href="https://github.com/libgit2/libgit2">https://github.com/libgit2/libgit2</a> foldername</strong><br>这将执行与上一个命令相同的操作，不过在本地创建的仓库名字变为 foldername。</p>
+<h2 id="下载代码"><a href="#下载代码" class="headerlink" title="下载代码"></a>下载代码</h2><p>如果你想下载托管在git上的代码，只需要知道代码托管路径，然后输入：<br>$ <strong>git clone <a href="https://github.com/libgit2/libgit2" target="_blank" rel="external">https://github.com/libgit2/libgit2</a></strong><br>如果你想重命名下载到本地的目录那么输入：<br>$ <strong>git clone <a href="https://github.com/libgit2/libgit2" target="_blank" rel="external">https://github.com/libgit2/libgit2</a> foldername</strong><br>这将执行与上一个命令相同的操作，不过在本地创建的仓库名字变为 foldername。</p>
 <h2 id="记录每次更新"><a href="#记录每次更新" class="headerlink" title="记录每次更新"></a>记录每次更新</h2><h3 id="检查当前文件状态"><a href="#检查当前文件状态" class="headerlink" title="检查当前文件状态"></a>检查当前文件状态</h3><p>要查看哪些文件处于什么状态，可以用 git status 命令。 如果在克隆仓库后立即使用此命令，会看到类似这样的输出：  </p>
 <p>$ <strong>git status</strong>    </p>
 <p>现在，让我们在项目下创建一个新的 README 文件。 如果之前并不存在这个文件，使用 git status 命令，你将看到一个新的未跟踪文件：  </p>
@@ -397,9 +406,9 @@ $ git config –global user.name “John Doe”$ git config –global user.email
 <h2 id="查看提交历史"><a href="#查看提交历史" class="headerlink" title="查看提交历史"></a>查看提交历史</h2><p>$ <strong>git log</strong><br>即可。至于更高端的用法，查看<a href="https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2" target="_blank" rel="external">文档</a></p>
 <h2 id="撤销操作"><a href="#撤销操作" class="headerlink" title="撤销操作"></a>撤销操作</h2><p>类似于svn的revert操作：<br>$ <strong>git checkout – filename.md</strong><br>$ <strong>git status</strong></p>
 <h2 id="远程仓库的使用"><a href="#远程仓库的使用" class="headerlink" title="远程仓库的使用"></a>远程仓库的使用</h2><ul>
-<li><p>新代码publish到新的仓库<br>如果你想把你的没有被git托管的代码发布到github上，那么按照下面的操作：<br><strong>echo “readme文件内容” &gt;&gt; README.md</strong><br><strong>git init</strong><br><strong>git add README.md</strong><br><strong>git commit -m “first commit”</strong><br><strong>git remote add origin <a href="https://github.com/cuicheng11165/1758.git">https://github.com/cuicheng11165/1758.git</a></strong><br><strong>git push -u origin master</strong>  </p>
+<li><p>新代码publish到新的仓库<br>如果你想把你的没有被git托管的代码发布到github上，那么按照下面的操作：<br><strong>echo “readme文件内容” &gt;&gt; README.md</strong><br><strong>git init</strong><br><strong>git add README.md</strong><br><strong>git commit -m “first commit”</strong><br><strong>git remote add origin <a href="https://github.com/cuicheng11165/1758.git" target="_blank" rel="external">https://github.com/cuicheng11165/1758.git</a></strong><br><strong>git push -u origin master</strong>  </p>
 </li>
-<li><p>现有仓库发布到远程仓库<br>如果git已经在本地托管了，那么只需要：<br><strong>git remote add origin <a href="https://github.com/cuicheng11165/1758.git">https://github.com/cuicheng11165/1758.git</a></strong><br><strong>git push -u origin master</strong>  </p>
+<li><p>现有仓库发布到远程仓库<br>如果git已经在本地托管了，那么只需要：<br><strong>git remote add origin <a href="https://github.com/cuicheng11165/1758.git" target="_blank" rel="external">https://github.com/cuicheng11165/1758.git</a></strong><br><strong>git push -u origin master</strong>  </p>
 </li>
 </ul>
 <p>拉取远程的改动分为pull 和fetch，pull相当于fetch+merge  </p>
@@ -460,8 +469,8 @@ $ git config –global user.name “John Doe”$ git config –global user.email
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/02/2015-12-16-inside-dictionary/" rel="next" title="带你看懂Dictionary内部实现">
-                <i class="fa fa-chevron-left"></i> 带你看懂Dictionary内部实现
+              <a href="/2016/02/02/2016-02-02-publish-blog-to-github/" rel="next" title="在Github上搭建自己的博客(Windows平台)">
+                <i class="fa fa-chevron-left"></i> 在Github上搭建自己的博客(Windows平台)
               </a>
             
           </div>
@@ -553,7 +562,7 @@ $ git config –global user.name “John Doe”$ git config –global user.email
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://oacbieak2.bkt.clouddn.com/Tony2.jpg"
+               src="https://avatars0.githubusercontent.com/u/4454716"
                alt="Cheng Cui" />
           <p class="site-author-name" itemprop="name">Cheng Cui</p>
           <p class="site-description motion-element" itemprop="description"></p>
