@@ -86,7 +86,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="CSharp," />
+  <meta name="keywords" content="CSharp,多线程," />
 
 
 
@@ -102,19 +102,16 @@
 
 
 
-<meta name="description" content="线程池当你创建一个新的线程的时候，大概需要几百微秒的时间来构建一个新的私有变量堆栈，1M的用户模式堆栈，加载一些必要的DLL。无论如何创建一个线程都是一个浪费资源的行为，线程池就是为了通过线程的重用来避免线程重建的开销。
-当CLR初始化的时候，线程池里没有线程。线程池内部会维护一个请求队列，当你的程序想执行异步操作的时候，你调用的方法会请求线程池的资源进入请求队列。如果线程池没有线程，线程池会创建">
+<meta name="description" content="介绍.NET 中TPL编程相关的知识">
 <meta property="og:type" content="article">
 <meta property="og:title" content=".NET线程池的介绍">
 <meta property="og:url" content="http://simmon.club/2016/02/04/2016-02-04-getstarted-threadpool/index.html">
 <meta property="og:site_name" content="Simmon's Blog">
-<meta property="og:description" content="线程池当你创建一个新的线程的时候，大概需要几百微秒的时间来构建一个新的私有变量堆栈，1M的用户模式堆栈，加载一些必要的DLL。无论如何创建一个线程都是一个浪费资源的行为，线程池就是为了通过线程的重用来避免线程重建的开销。
-当CLR初始化的时候，线程池里没有线程。线程池内部会维护一个请求队列，当你的程序想执行异步操作的时候，你调用的方法会请求线程池的资源进入请求队列。如果线程池没有线程，线程池会创建">
-<meta property="og:updated_time" content="2016-09-26T03:06:09.195Z">
+<meta property="og:description" content="介绍.NET 中TPL编程相关的知识">
+<meta property="og:updated_time" content="2016-09-26T09:38:51.623Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=".NET线程池的介绍">
-<meta name="twitter:description" content="线程池当你创建一个新的线程的时候，大概需要几百微秒的时间来构建一个新的私有变量堆栈，1M的用户模式堆栈，加载一些必要的DLL。无论如何创建一个线程都是一个浪费资源的行为，线程池就是为了通过线程的重用来避免线程重建的开销。
-当CLR初始化的时候，线程池里没有线程。线程池内部会维护一个请求队列，当你的程序想执行异步操作的时候，你调用的方法会请求线程池的资源进入请求队列。如果线程池没有线程，线程池会创建">
+<meta name="twitter:description" content="介绍.NET 中TPL编程相关的知识">
 
 
 
@@ -371,7 +368,9 @@
       
 
       
-        <h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><p>当你创建一个新的线程的时候，大概需要几百微秒的时间来构建一个新的私有变量堆栈，1M的用户模式堆栈，加载一些必要的DLL。无论如何创建一个线程都是一个浪费资源的行为，线程池就是为了通过线程的重用来避免线程重建的开销。</p>
+        <p>介绍.NET 中TPL编程相关的知识</p>
+<a id="more"></a>
+<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><p>当你创建一个新的线程的时候，大概需要几百微秒的时间来构建一个新的私有变量堆栈，1M的用户模式堆栈，加载一些必要的DLL。无论如何创建一个线程都是一个浪费资源的行为，线程池就是为了通过线程的重用来避免线程重建的开销。</p>
 <p>当CLR初始化的时候，线程池里没有线程。线程池内部会维护一个请求队列，当你的程序想执行异步操作的时候，你调用的方法会请求线程池的资源进入请求队列。如果线程池没有线程，线程池会创建新的线程，当任务结束的时候，线程不会马上被销毁，而是变为闲置状态，一段时间后，会自动结束。这样避免了频繁创建销毁线程带来的开销。</p>
 <p>有以下几种方式来进行线程池的操作:</p>
 <ul>
@@ -497,6 +496,8 @@ static void Done (IAsyncResult cookie)
           
             <a href="/tags/CSharp/" rel="tag">#CSharp</a>
           
+            <a href="/tags/多线程/" rel="tag">#多线程</a>
+          
         </div>
       
 
@@ -605,7 +606,7 @@ static void Done (IAsyncResult cookie)
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -613,7 +614,7 @@ static void Done (IAsyncResult cookie)
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -622,7 +623,7 @@ static void Done (IAsyncResult cookie)
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
