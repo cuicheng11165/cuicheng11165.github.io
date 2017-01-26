@@ -4,6 +4,46 @@
   
     
     <entry>
+      <title><![CDATA[HSTS基本原理及其设置]]></title>
+      <url>http://simmon.club/2017/01/26/2017-01-25-hsts/</url>
+      <content type="html"><![CDATA[<p>HSTS基本原理及其设置</p>
+<a id="more"></a>
+<h2 id="HSTS原理简述"><a href="#HSTS原理简述" class="headerlink" title="HSTS原理简述"></a>HSTS原理简述</h2><p>HSTS的作用是强制客户端（如浏览器）使用HTTPS与服务器创建连接。服务器开启HSTS的方法是，当客户端通过HTTPS发出请求时，在服务器返回的超文本传输协议响应头中包含Strict-Transport-Security字段。非加密传输时设置的HSTS字段无效。<br>比如，<a href="https://xxx" target="_blank" rel="external">https://xxx</a> 的响应头含有Strict-Transport-Security: max-age=31536000; includeSubDomains。这意味着两点：<br>在接下来的一年（即31536000秒）中，浏览器只要向xxx或其子域名发送HTTP请求时，必须采用HTTPS来发起连接。比如，用户点击超链接或在地址栏输入 <a href="http://xxx/" target="_blank" rel="external">http://xxx/</a> ，浏览器应当自动将 http 转写成 https，然后直接向 <a href="https://xxx/" target="_blank" rel="external">https://xxx/</a> 发送请求。<br>在接下来的一年中，如果 xxx 服务器发送的TLS证书无效，用户不能忽略浏览器警告继续访问网站</p>
+<p>HSTS可以用来抵御SSL剥离攻击。SSL剥离攻击是中间人攻击的一种，由Moxie Marlinspike于2009年发明。他在当年的黑帽大会上发表的题为“New Tricks For Defeating SSL In Practice”的演讲中将这种攻击方式公开。SSL剥离的实施方法是阻止浏览器与服务器创建HTTPS连接。它的前提是用户很少直接在地址栏输入<a href="https://，用户总是通过点击链接或3xx重定向，从HTTP页面进入HTTPS页面。所以攻击者可以在用户访问HTTP页面时替换所有https://开头的链接为http://，达到阻止HTTPS的目的。" target="_blank" rel="external">https://，用户总是通过点击链接或3xx重定向，从HTTP页面进入HTTPS页面。所以攻击者可以在用户访问HTTP页面时替换所有https://开头的链接为http://，达到阻止HTTPS的目的。</a><br>HSTS可以很大程度上解决SSL剥离攻击，因为只要浏览器曾经与服务器创建过一次安全连接，之后浏览器会强制使用HTTPS，即使链接被换成了HTTP。<br>另外，如果中间人使用自己的自签名证书来进行攻击，浏览器会给出警告，但是许多用户会忽略警告。HSTS解决了这一问题，一旦服务器发送了HSTS字段，用户将不再允许忽略警告。</p>
+<p>用户首次访问某网站是不受HSTS保护的。这是因为首次访问时，浏览器还未收到HSTS，所以仍有可能通过明文HTTP来访问。解决这个不足目前有两种方案，一是浏览器预置HSTS域名列表，Google Chrome、Firefox、Internet Explorer和Spartan实现了这一方案。二是将HSTS信息加入到域名系统记录中。但这需要保证DNS的安全性，也就是需要部署域名系统安全扩展。截至2014年这一方案没有大规模部署。<br>由于HSTS会在一定时间后失效（有效期由max-age指定），所以浏览器是否强制HSTS策略取决于当前系统时间。部分操作系统经常通过网络时间协议更新系统时间，如Ubuntu每次连接网络时，OS X Lion每隔9分钟会自动连接时间服务器。攻击者可以通过伪造NTP信息，设置错误时间来绕过HSTS。解决方法是认证NTP信息，或者禁止NTP大幅度增减时间。比如Windows 8每7天更新一次时间，并且要求每次NTP设置的时间与当前时间不得超过15小时。</p>
+<h2 id="如何在Chrome中修改HSTS设置："><a href="#如何在Chrome中修改HSTS设置：" class="headerlink" title="如何在Chrome中修改HSTS设置："></a>如何在Chrome中修改HSTS设置：</h2><ul>
+<li>In the address bar, type “chrome://net-internals/#hsts”.</li>
+<li>Type the domain name in the text field below “Delete domain”.</li>
+<li>Click the “Delete” button.</li>
+<li>Type the domain name in the text field below “Query domain”.</li>
+<li>Click the “Query” button.</li>
+<li>Your response should be “Not found”.</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[ResX文件生成C#类的几种方式]]></title>
+      <url>http://simmon.club/2016/12/22/2016-12-22-resx-to-csharp/</url>
+      <content type="html"><![CDATA[<p>通过ResX来生成C#代码</p>
+<a id="more"></a>
+<p>主要记录通过resource.resx文件来反向生成c#类的方式：</p>
+<ol>
+<li>通过第三方Tool</li>
+<li>通过微软提供的命令行，或者类库</li>
+<li>自定义代码</li>
+</ol>
+<h2 id="Extended-Strongly-Typed-Resource-Generator"><a href="#Extended-Strongly-Typed-Resource-Generator" class="headerlink" title="Extended Strongly Typed Resource Generator"></a>Extended Strongly Typed Resource Generator</h2><p>Extended Strongly Typed Resource Generator是一个第三方的VS插件，可以通过ResX文件来生成cs文件。<br>如图：</p>
+<p><img src="http://i.imgur.com/vcb11GC.png" alt=""><br>下载地址及其使用方法：<a href="https://www.codeproject.com/articles/13830/extended-strongly-typed-resource-generator" target="_blank" rel="external">连接</a></p>
+<h2 id="命令行，或者类库"><a href="#命令行，或者类库" class="headerlink" title="命令行，或者类库"></a>命令行，或者类库</h2><p><strong>Resgen.exe</strong> 也可以实现类似的功能：<a href="https://msdn.microsoft.com/en-us/library/ccec7sz1(v=vs.100" target="_blank" rel="external">文档地址</a>.aspx)</p>
+<p>例如想要通过resource.resx生成c#类只需要：<br>resgen resource.resx /str:C#,Namespace1,MyClass,MyFile.cs</p>
+<p><strong>StronglyTypedResourceBuilder 类</strong> 可以通过代码来实现上面的功能：<a href="https://msdn.microsoft.com/zh-cn/library/system.resources.tools.stronglytypedresourcebuilder.aspx" target="_blank" rel="external">示例代码</a></p>
+<h2 id="自定义代码"><a href="#自定义代码" class="headerlink" title="自定义代码"></a>自定义代码</h2><p>上面的两种方式生成类可能和现有的项目类名，方法名不同，那么我们只能通过编程的方式来生成代码。</p>
+<p>主要的思路就是通过<strong>CodeDOM</strong>来生成代码：<br><a href="https://msdn.microsoft.com/en-us/library/y2k85ax6(v=vs.110" target="_blank" rel="external">相关文档</a>.aspx)</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[13个有用的渗透测试资源博客]]></title>
       <url>http://simmon.club/2016/09/29/2016-09-29-hack-blog/</url>
       <content type="html"><![CDATA[<p>我们提供13个最有用的渗透测试博客，帮你获取最新知识，激励你的白帽人生。其中一些有好几年的渗透测试历程了。他们都值得你关注和学习。</p>
@@ -40,6 +80,34 @@
 <p>现在，依然有一部分信息安全社区依靠邮件列表获取信息，尽管这看起来有些过时。Nmap Security Scanner人员运营着Seclists.org网站，提供了受欢迎的邮件列表的清单。不管是菜鸟还是渗透测试专家都可以找到适合自己的邮件列表。</p>
 <p><a href="http://www.kitploit.com/" target="_blank" rel="external">Kitploit</a></p>
 <p>如果你在寻找特定类型的工具，你可以在Kitploit网站上找到。这里是渗透测试工具的宝库，把它加入到你的书签吧。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[BurpSuite破解版及其使用文档]]></title>
+      <url>http://simmon.club/2016/09/26/2010-01-01-DevTools/</url>
+      <content type="html"><![CDATA[<p>BurpSuite破解版，及其说明文档。</p>
+<a id="more"></a>
+<h2 id="破解版开发工具资源搜集"><a href="#破解版开发工具资源搜集" class="headerlink" title="破解版开发工具资源搜集"></a>破解版开发工具资源搜集</h2><h3 id="BurpSuite"><a href="#BurpSuite" class="headerlink" title="BurpSuite"></a>BurpSuite</h3><ul>
+<li><a href="http://page74.ctfile.com/shared/folder_17864246_732c7a40/" target="_blank" rel="external">破解版地址</a></li>
+<li><a href="http://page74.ctfile.com/shared/folder_17685272_dc9bbed4/" target="_blank" rel="external">说明文档地址</a></li>
+</ul>
+<h3 id="文档目录"><a href="#文档目录" class="headerlink" title="文档目录"></a>文档目录</h3><ul>
+<li>第一章 Burp Suite 安装和环境配置</li>
+<li>第二章 Burp Suite代理和浏览器设置</li>
+<li>第三章 如何使用Burp Suite代理</li>
+<li>第四章 SSL和Proxy高级选项</li>
+<li>第五章 如何使用Burp Target</li>
+<li>第六章 如何使用Burp Spider</li>
+<li>第七章 如何使用Burp Scanner</li>
+<li>第八章 如何使用Burp Intruder</li>
+<li>第九章 如何使用Burp Repeater</li>
+<li>第十章 如何使用Burp Sequencer</li>
+<li>第十一章 如何使用Burp Decoder</li>
+<li>第十二章 如何使用Burp Comparer</li>
+<li>第十三章 数据查找和拓展功能的使用</li>
+<li>第十四章 BurpSuite全局参数设置和使用</li>
+</ul>
 ]]></content>
     </entry>
     
@@ -381,34 +449,6 @@
 </li>
 </ul>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>这里的一篇图灵文章可以帮助你了解正则表达式的更深层原理:<a href="http://www.ituring.com.cn/tupubarticle/5512" target="_blank" rel="external">模式、自动机和正则表达式</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[BurpSuite破解版及其使用文档]]></title>
-      <url>http://simmon.club/2016/09/26/2010-01-01-DevTools/</url>
-      <content type="html"><![CDATA[<p>BurpSuite破解版，及其说明文档。</p>
-<a id="more"></a>
-<h2 id="破解版开发工具资源搜集"><a href="#破解版开发工具资源搜集" class="headerlink" title="破解版开发工具资源搜集"></a>破解版开发工具资源搜集</h2><h3 id="BurpSuite"><a href="#BurpSuite" class="headerlink" title="BurpSuite"></a>BurpSuite</h3><ul>
-<li><a href="http://page74.ctfile.com/shared/folder_17864246_732c7a40/" target="_blank" rel="external">破解版地址</a></li>
-<li><a href="http://page74.ctfile.com/shared/folder_17685272_dc9bbed4/" target="_blank" rel="external">说明文档地址</a></li>
-</ul>
-<h3 id="文档目录"><a href="#文档目录" class="headerlink" title="文档目录"></a>文档目录</h3><ul>
-<li>第一章 Burp Suite 安装和环境配置</li>
-<li>第二章 Burp Suite代理和浏览器设置</li>
-<li>第三章 如何使用Burp Suite代理</li>
-<li>第四章 SSL和Proxy高级选项</li>
-<li>第五章 如何使用Burp Target</li>
-<li>第六章 如何使用Burp Spider</li>
-<li>第七章 如何使用Burp Scanner</li>
-<li>第八章 如何使用Burp Intruder</li>
-<li>第九章 如何使用Burp Repeater</li>
-<li>第十章 如何使用Burp Sequencer</li>
-<li>第十一章 如何使用Burp Decoder</li>
-<li>第十二章 如何使用Burp Comparer</li>
-<li>第十三章 数据查找和拓展功能的使用</li>
-<li>第十四章 BurpSuite全局参数设置和使用</li>
-</ul>
 ]]></content>
     </entry>
     
@@ -788,45 +828,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[算法导论学习笔记 一 分治算法]]></title>
-      <url>http://simmon.club/2016/02/17/2016-02-17-Algorithms-fundamentals-divideandconquer/</url>
-      <content type="html"><![CDATA[<p>这一部分主要总结一些分制算法的基本思想。</p>
-<a id="more"></a>
-<p>分治策略是一种常见的算法。在分治策略中，我们递归的求解一个问题，在每层地柜中应用如下三个步骤：</p>
-<ol>
-<li>分解，将问题分解成规模更小但解决方案相同的子问题</li>
-<li>解决，递归的求解子问题，如果子问题足够小则停止递归，直接求解</li>
-<li>合并，将子问题的解组合成原问题的解</li>
-</ol>
-<h2 id="最大字数组问题"><a href="#最大字数组问题" class="headerlink" title="最大字数组问题"></a>最大字数组问题</h2><p>给你一段股市的波动图，找到在什么时候买入，什么时候卖出能获得最大的收益。</p>
-<p><img src="http://i.imgur.com/K4HuEf4.jpg" alt=""></p>
-<h3 id="暴力破解法"><a href="#暴力破解法" class="headerlink" title="暴力破解法"></a>暴力破解法</h3><p>我们很容易的想到一个包里破解法，就是把所有买入，卖出的组合列举出来进行对比，n天中取任意两天作为买入日和卖出日，共有n*(n-1)/2种解法，因此这种解法的时间复杂度是O(n^2）。</p>
-<h3 id="问题变换"><a href="#问题变换" class="headerlink" title="问题变换"></a>问题变换</h3><p>为了方便我们处理，我们把每个数组的值变为股票的净增量。这个时候，最佳解法就变成了求一个数组的最大字数组：</p>
-<p><img src="http://i.imgur.com/nT8zclC.jpg" alt=""></p>
-<h3 id="使用分治策略的求解法"><a href="#使用分治策略的求解法" class="headerlink" title="使用分治策略的求解法"></a>使用分治策略的求解法</h3><p>我们可以认为，我们要寻找子数组array[start,end]的最大字数组分三种情况：</p>
-<ul>
-<li>最大字数组在左半部分</li>
-<li>最大字数组在右半部分</li>
-<li>最大字数组起点在左半部分，终点在右半部分</li>
-</ul>
-<p>对于前两种情况，我们的求解方式和分解前是相同的，我们需要单独处理第三种情况。</p>
-<p>如图：</p>
-<p><img src="http://i.imgur.com/mAJQJHb.jpg" alt=""></p>
-<p>那么我们给出解这个问题的思路：</p>
-<pre><code>FindMaxCrossingSubArray(array,start,end)
-    mid=(start+end)/2
-    从mid开始向左找，找到以mid为终点的最大字数组为array[max-left,min]
-    从mid开始向右找，找到以mid为起点的最大字数组array[min,max-right]
-    跨越mid的最大字数组为array[max-left,max-right]
-    max-leftchild =FindMaxCrossingSubArray(array,start,mid)
-    max-rightchild =FindMaxCrossingSubArray(array,min,end)
-    return max-leftchild,max-rightchild,array[max-left,max-right] 3个中的最大字数组
-</code></pre><h3 id="分治算法分析"><a href="#分治算法分析" class="headerlink" title="分治算法分析"></a>分治算法分析</h3><p>这种方法我们需要遍历的次数会比n^2少一些，时间复杂度为O(nlgn)</p>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>自己尝试用C#实现了下，托管在了<a href="https://github.com/cuicheng11165/Algorithms" target="_blank" rel="external">github</a>上</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[MongoDB的基本操作总结]]></title>
       <url>http://simmon.club/2016/02/17/2016-02-17-MongoDB-fundamentals/</url>
       <content type="html"><![CDATA[<p>这一部分主要总结一些MongoDB的基本用法。</p>
@@ -961,6 +962,45 @@ db.restaurants.find( { $or: [ { &quot;cuisine&quot;: &quot;Italian&quot; }, { &q
    ]
 );
 </code></pre>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[算法导论学习笔记 一 分治算法]]></title>
+      <url>http://simmon.club/2016/02/17/2016-02-17-Algorithms-fundamentals-divideandconquer/</url>
+      <content type="html"><![CDATA[<p>这一部分主要总结一些分制算法的基本思想。</p>
+<a id="more"></a>
+<p>分治策略是一种常见的算法。在分治策略中，我们递归的求解一个问题，在每层地柜中应用如下三个步骤：</p>
+<ol>
+<li>分解，将问题分解成规模更小但解决方案相同的子问题</li>
+<li>解决，递归的求解子问题，如果子问题足够小则停止递归，直接求解</li>
+<li>合并，将子问题的解组合成原问题的解</li>
+</ol>
+<h2 id="最大字数组问题"><a href="#最大字数组问题" class="headerlink" title="最大字数组问题"></a>最大字数组问题</h2><p>给你一段股市的波动图，找到在什么时候买入，什么时候卖出能获得最大的收益。</p>
+<p><img src="http://i.imgur.com/K4HuEf4.jpg" alt=""></p>
+<h3 id="暴力破解法"><a href="#暴力破解法" class="headerlink" title="暴力破解法"></a>暴力破解法</h3><p>我们很容易的想到一个包里破解法，就是把所有买入，卖出的组合列举出来进行对比，n天中取任意两天作为买入日和卖出日，共有n*(n-1)/2种解法，因此这种解法的时间复杂度是O(n^2）。</p>
+<h3 id="问题变换"><a href="#问题变换" class="headerlink" title="问题变换"></a>问题变换</h3><p>为了方便我们处理，我们把每个数组的值变为股票的净增量。这个时候，最佳解法就变成了求一个数组的最大字数组：</p>
+<p><img src="http://i.imgur.com/nT8zclC.jpg" alt=""></p>
+<h3 id="使用分治策略的求解法"><a href="#使用分治策略的求解法" class="headerlink" title="使用分治策略的求解法"></a>使用分治策略的求解法</h3><p>我们可以认为，我们要寻找子数组array[start,end]的最大字数组分三种情况：</p>
+<ul>
+<li>最大字数组在左半部分</li>
+<li>最大字数组在右半部分</li>
+<li>最大字数组起点在左半部分，终点在右半部分</li>
+</ul>
+<p>对于前两种情况，我们的求解方式和分解前是相同的，我们需要单独处理第三种情况。</p>
+<p>如图：</p>
+<p><img src="http://i.imgur.com/mAJQJHb.jpg" alt=""></p>
+<p>那么我们给出解这个问题的思路：</p>
+<pre><code>FindMaxCrossingSubArray(array,start,end)
+    mid=(start+end)/2
+    从mid开始向左找，找到以mid为终点的最大字数组为array[max-left,min]
+    从mid开始向右找，找到以mid为起点的最大字数组array[min,max-right]
+    跨越mid的最大字数组为array[max-left,max-right]
+    max-leftchild =FindMaxCrossingSubArray(array,start,mid)
+    max-rightchild =FindMaxCrossingSubArray(array,min,end)
+    return max-leftchild,max-rightchild,array[max-left,max-right] 3个中的最大字数组
+</code></pre><h3 id="分治算法分析"><a href="#分治算法分析" class="headerlink" title="分治算法分析"></a>分治算法分析</h3><p>这种方法我们需要遍历的次数会比n^2少一些，时间复杂度为O(nlgn)</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>自己尝试用C#实现了下，托管在了<a href="https://github.com/cuicheng11165/Algorithms" target="_blank" rel="external">github</a>上</p>
+]]></content>
     </entry>
     
     <entry>
